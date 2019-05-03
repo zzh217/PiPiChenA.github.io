@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<script type="text/javascript" color="122,122,255" opacity="0.5" zindex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CTF,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="这次的比赛，题目质量太高了。萌新表示完全打不动啊，密码学做第二道的时候直接自闭了 xor game题目源码如下： 12345678910111213from Crypto.Util.strxor import strxorimport base64import randomdef enc(data, key):    key = (key * (len(data) / len(key) + 1))">
+<meta name="keywords" content="CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018-hctf-wp">
+<meta property="og:url" content="http://yoursite.com/2018/11/13/2018-hctf/index.html">
+<meta property="og:site_name" content="Bling_Dog">
+<meta property="og:description" content="这次的比赛，题目质量太高了。萌新表示完全打不动啊，密码学做第二道的时候直接自闭了 xor game题目源码如下： 12345678910111213from Crypto.Util.strxor import strxorimport base64import randomdef enc(data, key):    key = (key * (len(data) / len(key) + 1))">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-99ef7d9e0e20082d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-e05b0526bfc90e55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-f39f64c08ee2543f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-bd9e58ddfea20f2d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-a82e57afc5ebe7b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-d4932869a1ce4dc3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-0a5f0833fa7a6422.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-c1e4473776a12c38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-cf353c1375d32fbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-e179d7b7c475de1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-0276f680650fef6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-62e2db49592701d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-9ee4ae459ec39716.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-4604ab200a6442bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-ed24d02806a7b475.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-d22214c5286e68aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-11-13T12:16:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2018-hctf-wp">
+<meta name="twitter:description" content="这次的比赛，题目质量太高了。萌新表示完全打不动啊，密码学做第二道的时候直接自闭了 xor game题目源码如下： 12345678910111213from Crypto.Util.strxor import strxorimport base64import randomdef enc(data, key):    key = (key * (len(data) / len(key) + 1))">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/11234137-99ef7d9e0e20082d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/13/2018-hctf/">
+
+
+
+
+
+  <title>2018-hctf-wp | Bling_Dog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bling_Dog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">奔向大佬路上的小白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/2018-hctf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bling_Dog">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://upload-images.jianshu.io/upload_images/11234137-b2b20e005c98464d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bling_Dog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2018-hctf-wp</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-13T16:06:26+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这次的比赛，题目质量太高了。萌新表示完全打不动啊，密码学做第二道的时候直接自闭了</p>
+<h1 id="xor-game"><a href="#xor-game" class="headerlink" title="xor game"></a>xor game</h1><p>题目源码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from Crypto.Util.strxor import strxor</span><br><span class="line">import base64</span><br><span class="line">import random</span><br><span class="line">def enc(data, key):</span><br><span class="line">    key = (key * (len(data) / len(key) + 1))[:len(data)]</span><br><span class="line">    return strxor(data, key)</span><br><span class="line"></span><br><span class="line">poem = open(&apos;poem.txt&apos;, &apos;r&apos;).read()</span><br><span class="line">flag = &quot;hctf&#123;xxxxxxxxxxx&#125;&quot;</span><br><span class="line"></span><br><span class="line">with open(&apos;cipher.txt&apos;, &apos;w&apos;) as f:</span><br><span class="line">    f.write(base64.b64encode(enc(poem, flag[5:-1])))</span><br><span class="line">    f.close()</span><br></pre></td></tr></table></figure>
+<p>这个题是给出了加密过程，用flag的n倍重复去异或明文，得到密文。现在我们知道了密文。<br>题目思路，首先我们假设flag有x位，那么第一位flag对应加密明文的第1位，第1+x位，第1+2x位。我们先取第1位和第1+x位，让这两个位的可能为”ancdef……”等。如果这两位异或密文的第一位和第1+x位得到的结果相同，那么证明这个结果是flag的第一位的一种可能，循环遍历完第1位和第1+x位的所有可能并把结果放到一个集合中，然后我们再根据第1+x位和第1+2x位，再遍历出一个可能的集合，把第一位flag对应密文的所有位都遍历一遍，所有的集合取交集，就会得到flag的第一位。以此类推，便可得到flag的所有位数<br>脚本如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">from Crypto.Util.strxor import strxor</span><br><span class="line">import base64</span><br><span class="line">import random</span><br><span class="line">import sets</span><br><span class="line">import string</span><br><span class="line">poem = open(&apos;cipher.txt&apos;, &apos;r&apos;).read()</span><br><span class="line">x=base64.b64decode(poem)</span><br><span class="line">print x</span><br><span class="line">temp=dict=string.ascii_letters+string.digits+&quot;.?!&apos;\&quot;,;: ()-&quot;+chr(10)</span><br><span class="line">x1=set()</span><br><span class="line">jiaoji=set()</span><br><span class="line">flag=&quot;&quot;</span><br><span class="line">for i in range(21,22):# i weishu  11 12  i=18</span><br><span class="line">  print i</span><br><span class="line">  for o in range(i):# 0 1 ---- 17</span><br><span class="line">        print o</span><br><span class="line">        x1 = set()</span><br><span class="line">        jiaoji = set()</span><br><span class="line">        for j in range(int(len(x)/i)-1):#cishu 0 1 2 3</span><br><span class="line">            if j==1:</span><br><span class="line">                jiaoji=x1</span><br><span class="line">                x1=set()</span><br><span class="line">            if j&gt;=2:</span><br><span class="line">                jiaoji=jiaoji.intersection(x1)</span><br><span class="line">                # print &quot;jiaoji:&quot;,</span><br><span class="line">                # print jiaoji</span><br><span class="line">                x1 = set()</span><br><span class="line">            for k in temp:</span><br><span class="line">                for q in temp:</span><br><span class="line">                     if((ord(k)^ord(x[j*i+o]))==(ord(q)^ord(x[o+(j+1)*i]))):</span><br><span class="line">                         # print k, ord(k),q,ord(q),ord(x[j*i+o]),ord(x[o+(j+1)*i])</span><br><span class="line">                         x1.update(chr(ord(k)^ord(x[j*i+o])))</span><br><span class="line">            # print j</span><br><span class="line">            # print &quot;x1:&quot;,</span><br><span class="line">            # print x1</span><br><span class="line">            if len(jiaoji)==0 and j!=0:</span><br><span class="line">                break</span><br><span class="line">        flag=flag+str(jiaoji)[6]</span><br><span class="line">        print flag</span><br><span class="line">  print flag</span><br></pre></td></tr></table></figure></p>
+<p>运行结果:<br><img src="https://upload-images.jianshu.io/upload_images/11234137-99ef7d9e0e20082d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-99ef7d9e0e20082d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1 id="xor-rsa"><a href="#xor-rsa" class="headerlink" title="xor?rsa"></a>xor?rsa</h1><p>这个题直接把我卡住了，因为之前没有做过类似的题目。但是<a href="https://ctf-wiki.github.io/ctf-wiki/crypto/asymmetric/rsa/rsa_coppersmith_attack/#related-message-attack" target="_blank" rel="noopener">ctf wiki</a>上面有提到过这种问题，之后请教同学才发现，原来网上直接有解决这种问题的代码<a href="https://github.com/ValarDragon/CTF-Crypto/blob/master/RSA/FranklinReiter.sage" target="_blank" rel="noopener">github地址</a><br>直接上代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">#https://github.com/ValarDragon/CTF-Crypto/blob/master/RSA/FranklinReiter.sage</span><br><span class="line"># Franklin-Reiter attack against RSA.</span><br><span class="line"># If two messages differ only by a known fixed difference between the two messages</span><br><span class="line"># and are RSA encrypted under the same RSA modulus N</span><br><span class="line"># then it is possible to recover both of them.</span><br><span class="line"></span><br><span class="line"># Inputs are modulus, known difference, ciphertext 1, ciphertext2.</span><br><span class="line"># Ciphertext 1 corresponds to smaller of the two plaintexts. (The one without the fixed difference added to it)</span><br><span class="line">def franklinReiter(n,e,r,c1,c2):</span><br><span class="line">    R.&lt;X&gt; = Zmod(n)[]</span><br><span class="line">    f1 = X^e - c1</span><br><span class="line">    f2 = (X + r)^e - c2</span><br><span class="line">    # coefficient 0 = -m, which is what we wanted!</span><br><span class="line">    return Integer(n-(compositeModulusGCD(f1,f2)).coefficients()[0])</span><br><span class="line"></span><br><span class="line">  # GCD is not implemented for rings over composite modulus in Sage</span><br><span class="line">  # so we do our own implementation. Its the exact same as standard GCD, but with</span><br><span class="line">  # the polynomials monic representation</span><br><span class="line">def compositeModulusGCD(a, b):</span><br><span class="line">    if(b == 0):</span><br><span class="line">        return a.monic()</span><br><span class="line">    else:</span><br><span class="line">        return compositeModulusGCD(b, a % b)</span><br><span class="line"></span><br><span class="line">def CoppersmithShortPadAttack(e,n,C1,C2,eps=1/50):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    Coppersmith&apos;s Shortpad attack!</span><br><span class="line">    Figured out from: https://en.wikipedia.org/wiki/Coppersmith&apos;s_attack#Coppersmith.E2.80.99s_short-pad_attack</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    import binascii</span><br><span class="line">    P.&lt;x,y&gt; = PolynomialRing(ZZ)</span><br><span class="line">    ZmodN = Zmod(n)</span><br><span class="line">    g1 = x^e - C1</span><br><span class="line">    g2 = (x+y)^e - C2</span><br><span class="line">    res = g1.resultant(g2)</span><br><span class="line">    P.&lt;y&gt; = PolynomialRing(ZmodN)</span><br><span class="line">    # Convert Multivariate Polynomial Ring to Univariate Polynomial Ring</span><br><span class="line">    rres = 0</span><br><span class="line">    for i in range(len(res.coefficients())):</span><br><span class="line">        rres += res.coefficients()[i]*(y^(res.exponents()[i][1]))</span><br><span class="line"></span><br><span class="line">    diff = rres.small_roots(epsilon=eps)</span><br><span class="line">    recoveredM1 = franklinReiter(n,e,diff[0],C1,C2)</span><br><span class="line">    print(recoveredM1)</span><br><span class="line">    print(&quot;Message is the following hex, but potentially missing some zeroes in the binary from the right end&quot;)</span><br><span class="line">    print(hex(recoveredM1))</span><br><span class="line">    print(&quot;Message is one of:&quot;)</span><br><span class="line">    for i in range(8):</span><br><span class="line">        msg = hex(Integer(recoveredM1*pow(2,i)))</span><br><span class="line">        if(len(msg)%2 == 1):</span><br><span class="line">            msg = &apos;0&apos; + msg</span><br><span class="line">        if(msg[:2]==&apos;0x&apos;):</span><br><span class="line">            msg = msg[:2]</span><br><span class="line">        print(binascii.unhexlify(msg))</span><br></pre></td></tr></table></figure></p>
+<p>把对应的e n C1 C2填入即可得到m1，然后将C1和C2对应的数字对调一下，即可得到m2<br>运行结果如下：<br><img src="https://upload-images.jianshu.io/upload_images/11234137-e05b0526bfc90e55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-e05b0526bfc90e55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1 id="web-admin"><a href="#web-admin" class="headerlink" title="web-admin"></a>web-admin</h1><p>这个题注册登陆之后，在修改密码的地方，源代码中提示到了源码<br><img src="https://upload-images.jianshu.io/upload_images/11234137-f39f64c08ee2543f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-f39f64c08ee2543f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>解题思路：<br>注册一个ᴬdmin账号<br>登陆ᴬdmin，发现页面显示Admin<br>修改密码，退出登录<br>重新登陆Admin，看到flag<br>因为utf-8编码，其中有两次strlower,即把字母变小写。在注册的时候，会把名字格式转化一下，在修改密码的时候，又会把格式转换一下。注册的时候ᴬdmin变成了Admin，后台代码验证不存在Admin账号，所以注册成功。在修改密码的时候，Admin变成了admin,所以相当于我们直接修改了admin的密码。再用我们修改的密码进行登陆，即可得到flag。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-bd9e58ddfea20f2d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-bd9e58ddfea20f2d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>本题还有另外一种思路：<br>因为源码全部泄露出来了，所以我们在源码中发现了生成session的SECRET_KEY：<br><img src="https://upload-images.jianshu.io/upload_images/11234137-a82e57afc5ebe7b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-a82e57afc5ebe7b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>然后我们先注册一个账号，登陆，根据这个SECRET_KEY解密一下cookie试一试。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-d4932869a1ce4dc3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-d4932869a1ce4dc3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>我们发现解密成功，现在我们尝试一下加密。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-0a5f0833fa7a6422.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-0a5f0833fa7a6422.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>将之前name里的pipichen改为admin之后，生成session，然后再在浏览器中把cookie里面的session改为这个之后，我们发现登陆成功<br><img src="https://upload-images.jianshu.io/upload_images/11234137-c1e4473776a12c38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-c1e4473776a12c38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1 id="hide-and-seek"><a href="#hide-and-seek" class="headerlink" title="hide and seek"></a>hide and seek</h1><p>之前听说过zip上传文件软连接，但是从来没接触过，这个题见识了。出题大佬们太强了。<br>首先我们要做的是在linux虚拟机(我是这样)下执行建立软链接的命令，然后将软链接命令生成的文件打包成zip压缩包，然后当我们访问题目网站进行上传的时候，上传这个zip文件，他会自动读取zip文件里面的内容，当然，当我们zip文件里面是一个软链接文件的时候，服务器便会执行这个命令。这里有一篇文章可以参考。<a href="http://www.vuln.cn/8132" target="_blank" rel="noopener">http://www.vuln.cn/8132</a><br>然后我们就可以读取文件了。我们首先读取 /etc/passwd 的时候，先在linux下执行命令ln -s /etc/passwd test 然后再将生成的test文件打包成zip，上传。便会得到我们想要的一些信息，一步一步的读取<br>读取配置文件信息：<br><img src="https://upload-images.jianshu.io/upload_images/11234137-cf353c1375d32fbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-cf353c1375d32fbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>读取main.php里面的内容<br><img src="https://upload-images.jianshu.io/upload_images/11234137-e179d7b7c475de1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-e179d7b7c475de1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">from flask import Flask,session,render_template,redirect, url_for, escape, request,Response</span><br><span class="line">import uuid</span><br><span class="line">import base64</span><br><span class="line">import random</span><br><span class="line">import flag</span><br><span class="line">from werkzeug.utils import secure_filename</span><br><span class="line">import os</span><br><span class="line">random.seed(uuid.getnode())</span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config[&apos;SECRET_KEY&apos;] = str(random.random()*100)</span><br><span class="line">app.config[&apos;UPLOAD_FOLDER&apos;] = &apos;./uploads&apos;</span><br><span class="line">app.config[&apos;MAX_CONTENT_LENGTH&apos;] = 100 * 1024</span><br><span class="line">ALLOWED_EXTENSIONS = set([&apos;zip&apos;])</span><br><span class="line"></span><br><span class="line">def allowed_file(filename):</span><br><span class="line">    return &apos;.&apos; in filename and \</span><br><span class="line">           filename.rsplit(&apos;.&apos;, 1)[1].lower() in ALLOWED_EXTENSIONS</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(&apos;/&apos;, methods=[&apos;GET&apos;])</span><br><span class="line">def index():</span><br><span class="line">    error = request.args.get(&apos;error&apos;, &apos;&apos;)</span><br><span class="line">    if(error == &apos;1&apos;):</span><br><span class="line">        session.pop(&apos;username&apos;, None)</span><br><span class="line">        return render_template(&apos;index.html&apos;, forbidden=1)</span><br><span class="line"></span><br><span class="line">    if &apos;username&apos; in session:</span><br><span class="line">        return render_template(&apos;index.html&apos;, user=session[&apos;username&apos;], flag=flag.flag)</span><br><span class="line">    else:</span><br><span class="line">        return render_template(&apos;index.html&apos;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(&apos;/login&apos;, methods=[&apos;POST&apos;])</span><br><span class="line">def login():</span><br><span class="line">    username=request.form[&apos;username&apos;]</span><br><span class="line">    password=request.form[&apos;password&apos;]</span><br><span class="line">    if request.method == &apos;POST&apos; and username != &apos;&apos; and password != &apos;&apos;:</span><br><span class="line">        if(username == &apos;admin&apos;):</span><br><span class="line">            return redirect(url_for(&apos;index&apos;,error=1))</span><br><span class="line">        session[&apos;username&apos;] = username</span><br><span class="line">    return redirect(url_for(&apos;index&apos;))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(&apos;/logout&apos;, methods=[&apos;GET&apos;])</span><br><span class="line">def logout():</span><br><span class="line">    session.pop(&apos;username&apos;, None)</span><br><span class="line">    return redirect(url_for(&apos;index&apos;))</span><br><span class="line"></span><br><span class="line">@app.route(&apos;/upload&apos;, methods=[&apos;POST&apos;])</span><br><span class="line">def upload_file():</span><br><span class="line">    if &apos;the_file&apos; not in request.files:</span><br><span class="line">        return redirect(url_for(&apos;index&apos;))</span><br><span class="line">    file = request.files[&apos;the_file&apos;]</span><br><span class="line">    if file.filename == &apos;&apos;:</span><br><span class="line">        return redirect(url_for(&apos;index&apos;))</span><br><span class="line">    if file and allowed_file(file.filename):</span><br><span class="line">        filename = secure_filename(file.filename)</span><br><span class="line">        file_save_path = os.path.join(app.config[&apos;UPLOAD_FOLDER&apos;], filename)</span><br><span class="line">        if(os.path.exists(file_save_path)):</span><br><span class="line">            return &apos;This file already exists&apos;</span><br><span class="line">        file.save(file_save_path)</span><br><span class="line">    else:</span><br><span class="line">        return &apos;This file is not a zipfile&apos;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    try:</span><br><span class="line">        extract_path = file_save_path + &apos;_&apos;</span><br><span class="line">        os.system(&apos;unzip -n &apos; + file_save_path + &apos; -d &apos;+ extract_path)</span><br><span class="line">        read_obj = os.popen(&apos;cat &apos; + extract_path + &apos;/*&apos;)</span><br><span class="line">        file = read_obj.read()</span><br><span class="line">        read_obj.close()</span><br><span class="line">        os.system(&apos;rm -rf &apos; + extract_path)</span><br><span class="line">    except Exception as e:</span><br><span class="line">        file = None</span><br><span class="line"></span><br><span class="line">    os.remove(file_save_path)</span><br><span class="line">    if(file != None):</span><br><span class="line">        if(file.find(base64.b64decode(&apos;aGN0Zg==&apos;).decode(&apos;utf-8&apos;)) != -1):</span><br><span class="line">            return redirect(url_for(&apos;index&apos;, error=1))</span><br><span class="line">    return Response(file)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    #app.run(debug=True)</span><br><span class="line">    app.run(host=&apos;127.0.0.1&apos;, debug=True, port=10008)</span><br></pre></td></tr></table></figure></p>
+<p>读取 /templates/index.html:<br><img src="https://upload-images.jianshu.io/upload_images/11234137-0276f680650fef6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-0276f680650fef6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>我们得到提示，只有admin登陆才能获取到flag。<br>我们再看源码，发现了random.seed(uuid.getnode())和app.config[‘SECRET_KEY’] = str(random.random()*100)。我们本地执行一下，发现生成的SECRET_KEY是一个固定的值。而uuid.getnode()是获取本地的mac地址。这里的linux下命令为：ln -s /sys/class/net/eth0/address test 然后把test压缩为zip之后上传，即可得到mac地址。<br>获取的地址为:<br><img src="https://upload-images.jianshu.io/upload_images/11234137-62e2db49592701d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-62e2db49592701d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>将mac地址转化为十进制，然后生成SECRET_KEY,代码如下，只需稍微修改一下源码即可，将uuid.getnode换成我们计算出来的mac地址的十进制:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">from flask import Flask,session,render_template,redirect, url_for, escape, request,Response</span><br><span class="line">import flask</span><br><span class="line">import uuid</span><br><span class="line">import base64</span><br><span class="line">import random</span><br><span class="line">from werkzeug.utils import secure_filename</span><br><span class="line">import os</span><br><span class="line">mac=&apos;12:34:3e:14:7c:62&apos;</span><br><span class="line">mac=20015589129314</span><br><span class="line">random.seed(mac)</span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config[&apos;SECRET_KEY&apos;] = str(random.random()*100)</span><br><span class="line">print(app.config[&apos;SECRET_KEY&apos;])</span><br></pre></td></tr></table></figure></p>
+<p>生成的SECRET_KEY如下：<br><img src="https://upload-images.jianshu.io/upload_images/11234137-9ee4ae459ec39716.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-9ee4ae459ec39716.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>我们和admin的第二种做法一样，先用SECRET_KEY解密一下session，然后我们再根据格式，生成我们想要的session。然后在浏览器中修改。<br>解密之后的session为：<a href="https://github.com/noraj/flask-session-cookie-manager" target="_blank" rel="noopener">工具网址</a><br><img src="https://upload-images.jianshu.io/upload_images/11234137-4604ab200a6442bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-4604ab200a6442bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>加密admin用户名的session为：<br><img src="https://upload-images.jianshu.io/upload_images/11234137-ed24d02806a7b475.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-ed24d02806a7b475.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>然后用这个session替换掉浏览器里面的那个，访问题目网站即可得到flag<br><img src="https://upload-images.jianshu.io/upload_images/11234137-d22214c5286e68aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-d22214c5286e68aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CTF/" rel="tag"># CTF</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/07/uploads/" rel="next" title="uploads-labs总结">
+                <i class="fa fa-chevron-left"></i> uploads-labs总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/17/2018高校网络安全信息安全管理运维挑战赛/" rel="prev" title="2018高校网络信息安全管理运维挑战赛wp">
+                2018高校网络信息安全管理运维挑战赛wp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://upload-images.jianshu.io/upload_images/11234137-b2b20e005c98464d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Bling_Dog">
+            
+              <p class="site-author-name" itemprop="name">Bling_Dog</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/PiPiChenA" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="563667866@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#xor-game"><span class="nav-number">1.</span> <span class="nav-text">xor game</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#xor-rsa"><span class="nav-number">2.</span> <span class="nav-text">xor?rsa</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web-admin"><span class="nav-number">3.</span> <span class="nav-text">web-admin</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hide-and-seek"><span class="nav-number">4.</span> <span class="nav-text">hide and seek</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bling_Dog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/click.js"></script>
+

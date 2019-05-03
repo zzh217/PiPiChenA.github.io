@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<script type="text/javascript" color="122,122,255" opacity="0.5" zindex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CTF,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="最近打了一下ustc(大佬请略过)，整理了部分题目的wp，算是第一次写个人博客吧，希望以后越来越好 签到题题目非常基础，chrome浏览器，F12打开控制台，将页面源码中的 maxlength 改为14即可完整输入hackergame2018，提交得到flag 猫咪问答这道题前四个空都是可以Google出来的，第五个空因为无法查到具体教室，所以需要burpsuite进行爆破。爆破的时候，找到了中科">
+<meta name="keywords" content="CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018ustcCTF部分题目wp">
+<meta property="og:url" content="http://yoursite.com/2018/10/16/ustc/index.html">
+<meta property="og:site_name" content="Bling_Dog">
+<meta property="og:description" content="最近打了一下ustc(大佬请略过)，整理了部分题目的wp，算是第一次写个人博客吧，希望以后越来越好 签到题题目非常基础，chrome浏览器，F12打开控制台，将页面源码中的 maxlength 改为14即可完整输入hackergame2018，提交得到flag 猫咪问答这道题前四个空都是可以Google出来的，第五个空因为无法查到具体教室，所以需要burpsuite进行爆破。爆破的时候，找到了中科">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-dc50ecb9ec2dbe13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-8b996b2e8cc7c96d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-d3660f5da920c99e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-84f0b2193b9cc428.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-cd139f73d28ebede.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-0128d0591446f8f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-5014f77c3bfa10d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-fcaf8c4b075e8224.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-c0e161f1d59c0323.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-01f33d8f4fbc925f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-c6265b6dcdcae5bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-229a4715d64cb265.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-54478d45e02fd197.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-d480352b9ebe30d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-3eaf22883d01bd12.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-cb38d687b82bec71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-b2625fc84a2a40fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-a602ed487e1bb429.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-d86715844b86a9e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-82156cf442144bf8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-8569d7ccc80d08c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-0ccfb7f764b7299d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-e3b0be09f5a50f0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-b9b005cb28ee450d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-8990b4ef84e003df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-540dd01c690ea04b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-a5355fe751003211.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-10-16T12:00:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2018ustcCTF部分题目wp">
+<meta name="twitter:description" content="最近打了一下ustc(大佬请略过)，整理了部分题目的wp，算是第一次写个人博客吧，希望以后越来越好 签到题题目非常基础，chrome浏览器，F12打开控制台，将页面源码中的 maxlength 改为14即可完整输入hackergame2018，提交得到flag 猫咪问答这道题前四个空都是可以Google出来的，第五个空因为无法查到具体教室，所以需要burpsuite进行爆破。爆破的时候，找到了中科">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/11234137-dc50ecb9ec2dbe13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/16/ustc/">
+
+
+
+
+
+  <title>2018ustcCTF部分题目wp | Bling_Dog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bling_Dog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">奔向大佬路上的小白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/16/ustc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bling_Dog">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://upload-images.jianshu.io/upload_images/11234137-b2b20e005c98464d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bling_Dog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2018ustcCTF部分题目wp</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-16T14:19:15+08:00">
+                2018-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近打了一下ustc(大佬请略过)，整理了部分题目的wp，算是第一次写个人博客吧，希望以后越来越好</p>
+<h1 id="签到题"><a href="#签到题" class="headerlink" title="签到题"></a>签到题</h1><p>题目非常基础，chrome浏览器，F12打开控制台，将页面源码中的 maxlength 改为14即可完整输入hackergame2018，提交得到flag<br><img src="https://upload-images.jianshu.io/upload_images/11234137-dc50ecb9ec2dbe13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="签到题"></p>
+<h1 id="猫咪问答"><a href="#猫咪问答" class="headerlink" title="猫咪问答"></a>猫咪问答</h1><p>这道题前四个空都是可以Google出来的，第五个空因为无法查到具体教室，所以需要burpsuite进行爆破。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-8b996b2e8cc7c96d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="问答"><br>爆破的时候，找到了中科大官网上的查询教室网站<a href="http://mis.teach.ustc.edu.cn/initkxjscx.do" target="_blank" rel="noopener">教室网站链接</a><br>然后最终发现是西区三教的教室。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-d3660f5da920c99e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="爆破答案"><br>最终得到教室编号3A202，得到flag<br><img src="https://upload-images.jianshu.io/upload_images/11234137-84f0b2193b9cc428.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="问答flag"></p>
+<h1 id="游园会的集章卡片"><a href="#游园会的集章卡片" class="headerlink" title="游园会的集章卡片"></a>游园会的集章卡片</h1><p>本题比较简单，下载题目压缩包，然后按照中科大给的标识，将图片拼起来即可(滑稽脸)<br><img src="https://upload-images.jianshu.io/upload_images/11234137-cd139f73d28ebede.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="拼图"></p>
+<h1 id="Word文档"><a href="#Word文档" class="headerlink" title="Word文档"></a>Word文档</h1><p>本题为Misc基础题，直接winhex打开下载下来的word文档，查看文件的开头和结尾格式，发现是zip文件开头(50 4B 03 04)<br><img src="https://upload-images.jianshu.io/upload_images/11234137-0128d0591446f8f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ZIP"><br>然后解压文件，发现flag.txt，打开之后即为flag<br><img src="https://upload-images.jianshu.io/upload_images/11234137-5014f77c3bfa10d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ZIP flag"></p>
+<h1 id="猫咪银行"><a href="#猫咪银行" class="headerlink" title="猫咪银行"></a>猫咪银行</h1><p>本题目感觉是非预期解<br>按照正常的格式输入的话，肯定无法在规定的时间内得到足够的钱。于是测试大数溢出。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-fcaf8c4b075e8224.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="初步测试"><br>发现预计收益变成了负数，说明大数字可能是后台的算法出现溢出，当存入时间输入为555555555555555555(可为别的数字，这里只是我随机选取的)，发现取出时间变为负数，预计收益变得特别大，然后立即取出，兑换flag即可。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-c0e161f1d59c0323.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="测试成功"><br>flag兑换<br><img src="https://upload-images.jianshu.io/upload_images/11234137-01f33d8f4fbc925f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="flag兑换"></p>
+<h1 id="黑曜石浏览器"><a href="#黑曜石浏览器" class="headerlink" title="黑曜石浏览器"></a>黑曜石浏览器</h1><p>本题有点坑，刚开始以为真的要用黑曜石浏览器打开网站，但是黑曜石浏览器下载不好，刚开始以为要绕过，后来发现自己想多了。<br>Google搜索到黑曜石浏览器，然后发现不能注册。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-c6265b6dcdcae5bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="黑曜石浏览器"><br>然后想到的是burpsuite修改浏览器标识，但是不知道具体的版本号，最终在黑曜石官网<a href="https://heicore.com/index.php" target="_blank" rel="noopener">所谓官网</a>查看源码，找到了版本号。<br><a href="view-source:https://heicore.com/index.html" target="_blank" rel="noopener">源码地址</a><br><img src="https://upload-images.jianshu.io/upload_images/11234137-229a4715d64cb265.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="版本号"><br>然后burp suite抓包改包(User-Agent部分)，得到flag<br><img src="https://upload-images.jianshu.io/upload_images/11234137-54478d45e02fd197.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="黑曜石flag"></p>
+<h1 id="回到过去"><a href="#回到过去" class="headerlink" title="回到过去"></a>回到过去</h1><p>本题是一个Misc题目，没有难度，考了linux下的ed编辑器，本人之前也没用过，上网查找<a href="https://blog.csdn.net/sure952/article/details/1655607" target="_blank" rel="noopener">ed使用说明</a> linux系统输入之后，写入文件即可得到flag。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-d480352b9ebe30d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="回到过去flag"><br><img src="https://upload-images.jianshu.io/upload_images/11234137-3eaf22883d01bd12.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="flag.."></p>
+<h1 id="我是谁"><a href="#我是谁" class="headerlink" title="我是谁"></a>我是谁</h1><h2 id="哲学思考"><a href="#哲学思考" class="headerlink" title="哲学思考"></a>哲学思考</h2><p>这个题感觉脑洞比较大，之前卡了半天，然后朋友才告诉我，要看状态码……<br><img src="https://upload-images.jianshu.io/upload_images/11234137-cb38d687b82bec71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="状态码"><br>然后输入 taepot ，得到flag<br><img src="https://upload-images.jianshu.io/upload_images/11234137-b2625fc84a2a40fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="哲学"></p>
+<h2 id="Can-I-help-U"><a href="#Can-I-help-U" class="headerlink" title="Can I help U?"></a>Can I help U?</h2><p><img src="https://upload-images.jianshu.io/upload_images/11234137-a602ed487e1bb429.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="题目提示"><br>题目提示要换种方法请求页面，先burpsuite抓包，然后将本来的GET方法改为POST方法<br><img src="https://upload-images.jianshu.io/upload_images/11234137-d86715844b86a9e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="POST方法"><br>然后页面提示要看一个RFC-7168的东西，然后搜索找到它。<a href="https://www.rfc-editor.org/rfc/rfc7168.txt" target="_blank" rel="noopener">https://www.rfc-editor.org/rfc/rfc7168.txt</a><br><img src="https://upload-images.jianshu.io/upload_images/11234137-82156cf442144bf8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="RFC-7168"><br>根据文档提示，应该是将POST方法改为BREW方法(虽然我开始也不知道是啥方法)，然后添加Content-Type: message/coffeepot<br><img src="https://upload-images.jianshu.io/upload_images/11234137-8569d7ccc80d08c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-8569d7ccc80d08c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>根据返回包提示，应该把coffeepot改为teapot，再GO一下<br><img src="https://upload-images.jianshu.io/upload_images/11234137-0ccfb7f764b7299d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-0ccfb7f764b7299d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>发现返回包给了地址，然后将地址改为返回包的地址，GO一下，得到flag。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-e3b0be09f5a50f0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-e3b0be09f5a50f0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1 id="猫咪遥控器"><a href="#猫咪遥控器" class="headerlink" title="猫咪遥控器"></a>猫咪遥控器</h1><p>本题为Misc方向题目，查看题目给的文档，里面只出现了四个字母，U D L R 应该是表示方向所以本题应该是作图。然后就用到了python的matplotlib库和numpy库。将题目给的文档作图，得到flag<br><img src="https://upload-images.jianshu.io/upload_images/11234137-b9b005cb28ee450d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-b9b005cb28ee450d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>python代码(py2.7)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python2</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">xxx=&quot;DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRDDDDDDDDDDDDDDDDDDDDLLLLLLLLLLLLLLLLLLDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDUUUUUUUUUUUUUUUUUUUUUUUUUULLLLLLLLLLLLRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRLLLLLLLLLLLLLLLLLLLLLLLLRRRRDDDDDDDDRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRUUUUUUUUUUUUUUUUUUUUDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDUUUUUUUUUUUUUUUUUUUURRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRUUUUUUUULLLLLLLLLLLLLLLLRRRRRRRRRRRRRRRRRRRRLLLLDDDDDDDDDDDDDDDDDDDDDDDDDDDDLLLLLLLLLLLLLLLLLLLLUUUUUUUUUUUUUUUURRRRRRRRRRRRRRRRRRRRUUUUUUUUUUUULLLLLLLLLLLLLLLLLLLLRRRRRRRRRRRRRRRRRRRRRRRRLLLLDDDDDDDDRRRRRRRRRRRRRRRRDDDDDDDDDDDDDDDDDDDDRRRRRRRRRRRRRRRRRRRRUUUUUUUUUUUUUUUUUUUUUUUUUUUULLLLLLLLLLLLLLLLLLLLDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDUUUURRRRRRRRRRRRRRRRRRRRRRRRLLLLDDDDDDDDDDDDLLLLLLLLLLLLLLLLLLLLLLLLRRRRRRRRRRRRRRRRRRRRRRRRRRRRLLLLUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUDDDDDDDDRRRRRRRRRRRRRRRRRRRRRRRRRRRRUUUUUUUUUUUUUUUUUUUURRRRRRRRLLLLLLLLDDDDDDDDDDDDDDDDDDDDDDDDLLLLLLLLDDDDRRRRRRRRDDDDDDDDDDDDDDDDDDDDDDDDRRRRRRRRLLLLLLLLUUUUUUUUUUUUUUUUUUUUUUUULLLLLLLLUUUURRRRRRRRUUUURRRRRRRRRRRRRRRRRRRRRRRRDDDDDDDDDDDDDDDDDDDDUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURRRRDDDDRRRRDDDDRRRRDDDDDDDDDDDDDDDDUUUUUUUUUUUUUUUURRRRRRRRUUUUUUUURRRRDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDUUUUUUUUUUUUUUUUUUUURRRRRRRRRRRRUUUURRRRUUUURRRRRRRRRRRRRRRRDDDDRRRRDDDDRRRRDDDDDDDDLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLUUUURRRRUUUUDDDDLLLLDDDDDDDDRRRRDDDDRRRRDDDDRRRRRRRRRRRRUUUURRRRRRRRUUUUDDDDLLLLLLLLDDDDLLLLLLLLLLLLUUUULLLLUUUULLLLUUUUUUUURRRRUUUURRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRDDDDDDDDDDDDDDDDDRRRRRRRRRRRRRRRRRRRRRRRRRRRRUUUUUUUUUUUUUUUUUUUUUUUULLLLLLLLLLLLLLLLLLLLLLLLLLLLDDDDDDDDDDDDDDDDDDDDDDDDRRRRRRRRRRRRRRRRRRRRRRRRRRRRUUUUUUUUUUUUUUUURRRRRRRRUUUULLLLUUUUDDDDRRRRDDDDRRRRDDDDDDDDDDDDDDDDDDDDRRRRUUUUUUUUUUUURRRRUUUUUUUUDDDDDDDDRRRRDDDDDDDDDDDDRRRRUUUUUUUUUUUUUUUUUUUURRRRUUUURRRRUUUUDDDDLLLLDDDDRRRRRRRRRRRRUUUUUUUUUUUUUUUUDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURRRRDDDDRRRRDDDDRRRRDDDDDDDDDDDDDDDDUUUUUUUUUUUUUUUURRRRUUUURRRRUUUURRRRDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDUUUUUUUUUUUUUUUUUUUUDDDDUUUURRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRLLLLLLLLLLLLLLLLUUUULLLLUUUULLLLLLLLDDDDLLLLDDDDLLLLDDDDDDDDDDDDRRRRDDDDRRRRDDDDRRRRRRRRUUUURRRRRRRRUUUUDDDDLLLLLLLLDDDDLLLLLLLLUUUULLLLUUUULLLLUUUUUUUURRRRRRRRRRRRRRRRRRRRRRRRUUUULLLLUUUUDDDDRRRRRRRRRRRRRRRRRRRRDDDDDDDDDDDDDDDDRRRRRRRRRRRRRRRRRRRRUUUUUUUUUUUUUUUUUUUULLLLLLLLLLLLLLLLLLLLDDDDDDDDUUUUUUUURRRRRRRRRRRRRRRRRRRRDDDDRRRRRRRRRRRRUUUULLLLUUUUDDDDRRRRDDDDRRRRDDDDDDDDDDDDDDDDDDDDRRRRUUUUUUUUUUUUUUUURRRRUUUUUUUUDDDDDDDDRRRRDDDDDDDDDDDDDDDDRRRRRRRRUUUUUUUUUUUUUUUURRRRUUUUUUUURRRRUUUUDDDDLLLLDDDDRRRRRRRRRRRRRRRRRRRRUUUUUUUUUUUUUUUULLLLLLLLRRRRRRRRDDDDDDDDDDDDDDDDDDDDRRRRRRRRDDDDLLLLLLLLDDDDDDDDDDDDDDDDDDDDLLLLLLLL&quot;</span><br><span class="line"># print xxx.__len__()</span><br><span class="line">xxxx=0</span><br><span class="line">yyyy=0</span><br><span class="line">for i in range(2813):</span><br><span class="line">    if xxx[i]==&apos;D&apos;:</span><br><span class="line">        x=np.linspace(xxxx,xxxx,100)</span><br><span class="line">        yyyy=yyyy-1</span><br><span class="line">        y=np.linspace(yyyy,yyyy+1,100)</span><br><span class="line">        print y</span><br><span class="line">        plt.plot(x,y)</span><br><span class="line">        continue</span><br><span class="line">    if xxx[i]==&apos;U&apos;:</span><br><span class="line">        x = np.linspace(xxxx, xxxx, 100)</span><br><span class="line">        yyyy = yyyy + 1</span><br><span class="line">        y = np.linspace(yyyy-1, yyyy, 100)</span><br><span class="line">        plt.plot(x, y)</span><br><span class="line">        continue</span><br><span class="line">    if xxx[i]==&apos;R&apos;:</span><br><span class="line">        y=np.linspace(yyyy,yyyy,100)</span><br><span class="line">        xxxx=xxxx+1</span><br><span class="line">        x=np.linspace(xxxx-1,xxxx,100)</span><br><span class="line">        plt.plot(x,y)</span><br><span class="line">        continue</span><br><span class="line">    if xxx[i]==&apos;L&apos;:</span><br><span class="line">        y = np.linspace(yyyy, yyyy, 100)</span><br><span class="line">        xxxx = xxxx - 1</span><br><span class="line">        x = np.linspace(xxxx, xxxx+1, 100)</span><br><span class="line">        plt.plot(x, y)</span><br><span class="line">        continue</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<h1 id="她的诗"><a href="#她的诗" class="headerlink" title="她的诗"></a>她的诗</h1><p>原题关键代码为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for i in fin:</span><br><span class="line">    data = &quot;begin 666 &lt;data&gt;\n&quot; + i + &quot; \nend\n&quot;</span><br><span class="line">    decode_data = decode(data.encode(&quot;ascii&quot;), &quot;uu&quot;)</span><br><span class="line">    print(decode_data)</span><br><span class="line">    fout.write(decode_data.decode(&quot;ascii&quot;) + &quot;\n&quot;)</span><br></pre></td></tr></table></figure></p>
+<p>但是根据官方给出的代码，只能解出一首诗<br><img src="https://upload-images.jianshu.io/upload_images/11234137-8990b4ef84e003df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-8990b4ef84e003df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>所以我们需要自己解析官方给的文档,google搜索begin 666，发现这是UUencode编码，找到<a href="http://web.chacuo.net/charsetuuencode" target="_blank" rel="noopener">uuencode解码网站</a>，解码。<br>发现解码出来的东西和用官方python代码解出的东西有一些不同，然后上python代码，调用difflib库<br>解得flag<br><img src="https://upload-images.jianshu.io/upload_images/11234137-540dd01c690ea04b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-540dd01c690ea04b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>python代码(py2.7)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"># coding:utf-8</span><br><span class="line">import re</span><br><span class="line">import string</span><br><span class="line">import difflib</span><br><span class="line">flag=&quot;&quot;</span><br><span class="line">a=&apos;&apos;&apos;</span><br><span class="line">---------</span><br><span class="line">There is something in this world</span><br><span class="line">that no one has ever seen before.</span><br><span class="line">It is gentle and sweet.</span><br><span class="line">Maybe if it could be seen,</span><br><span class="line">everyone would fight over it.</span><br><span class="line">That is why the world hid it,</span><br><span class="line">so that no one could get their hands</span><br><span class="line">on it so easily.</span><br><span class="line">However, someday, someone will find it.</span><br><span class="line">The person who deserves it the most</span><br><span class="line">will definitely find it.</span><br><span class="line">---------</span><br><span class="line">Do you like this school?</span><br><span class="line">I really, really love it.</span><br><span class="line">But nothing can stay unchanged.</span><br><span class="line">Fun things... Happy things...</span><br><span class="line">They can&apos;t all possibly stay unchanged.</span><br><span class="line">Even so,</span><br><span class="line">can you go on loving this place?</span><br><span class="line">---------</span><br><span class="line">Sometimes I wonder,</span><br><span class="line">what if this town was alive?</span><br><span class="line">What if it had thoughts and feelings</span><br><span class="line">like one of us?</span><br><span class="line">If it did,</span><br><span class="line">I think it would want to make the people</span><br><span class="line">who live here happy.</span><br><span class="line">---------</span><br><span class="line">Expectations are what you have</span><br><span class="line">when you have given up.</span><br><span class="line">Expectations are born from</span><br><span class="line">a despairingly large difference in skill.</span><br><span class="line">---------</span><br><span class="line">A joke only lasts for a moment,</span><br><span class="line">if it leaves a misunderstanding,</span><br><span class="line">it becomes a lie.</span><br><span class="line">---------</span><br><span class="line">If someone didn&apos;t have any pride,</span><br><span class="line">wouldn&apos;t they also be lacking</span><br><span class="line">in self-confidence?</span><br><span class="line">If someone was free of greed,</span><br><span class="line">wouldn&apos;t they have trouble</span><br><span class="line">supporting their family?</span><br><span class="line">And if people didn&apos;t envy one another,</span><br><span class="line">wouldn&apos;t they stop inventing new things?</span><br><span class="line">---------</span><br><span class="line">If I don&apos;t have to do it, I won&apos;t.</span><br><span class="line">If I have to do it, I&apos;ll make it.</span><br><span class="line">---------</span><br><span class="line">/* Here is the end of my poem.</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">a=a.replace(&quot;\n&quot;,&quot;&quot;)</span><br><span class="line">b=&quot;---------There is something in this worldfthat no one has ever seen before.It is gentle and sweet.lMaybe if it could be seen,aeveryone would fight over it.gThat is why the world hid it,&#123;so that no one could get their handson it so easily.STHowever, someday, someone will find it.The person who deserves it the mostewill definitely find it.---------Do you like this school?I really, really love it.gABut nothing can stay unchanged.n0Fun things... Happy things...gThey can&apos;t all possibly stay unchanged.Even so,rcan you go on loving this place?A---------Sometimes I wonder,Phwhat if this town was alive?y_What if it had thoughts and feelingslike one of us?If it did,w1I think it would want to make the peopletHwho live here happy._---------Expectations are what you havewhen you have given up.uExpectations are born fromUa despairingly large difference in skill.e---------A joke only lasts for a moment,Ncif it leaves a misunderstanding,0it becomes a lie.D---------If someone didn&apos;t have any pride,wouldn&apos;t they also be lackingEin self-confidence?_IIf someone was free of greed,5wouldn&apos;t they have trouble_supporting their family?And if people didn&apos;t envy one another,5wouldn&apos;t they stop inventing new things?0_---------If I don&apos;t have to do it, I won&apos;t.fuIf I have to do it, I&apos;ll make it.---------/* Here is the end of my poem.&quot;</span><br><span class="line">d = difflib.Differ()</span><br><span class="line">diff = list(d.compare(a,b))</span><br><span class="line">for line in diff:</span><br><span class="line">    if line[0]==&apos;+&apos;:</span><br><span class="line">        flag+=line</span><br><span class="line">flag=flag.replace(&quot;+&quot;,&quot;&quot;).replace(&quot; &quot;,&quot;&quot;)</span><br><span class="line">print flag</span><br></pre></td></tr></table></figure></p>
+<h1 id="猫咪克星"><a href="#猫咪克星" class="headerlink" title="猫咪克星"></a>猫咪克星</h1><p>本题为python脚本编写题目，nc对面的端口，对面发来一些表达式，需要再规定时间内计算出这些表达式，并且将计算结果返回到对面。解出来之后发现是30s内算100道表达式。服务器从第50道题之后开始发一些不正规的表达式，这时候需要将里面的一些东西替换为0，具体看代码。<br>结果：<br><img src="https://upload-images.jianshu.io/upload_images/11234137-a5355fe751003211.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-a5355fe751003211.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>python代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python2</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">from socket import*</span><br><span class="line">import socket</span><br><span class="line">import re</span><br><span class="line">HOST = &apos;202.38.95.46&apos;    # The remote host</span><br><span class="line">PORT = 12009                 # The same port as used by the server</span><br><span class="line">s = None</span><br><span class="line"></span><br><span class="line">def RRR(shizi):</span><br><span class="line">    xxxx=str(shizi)</span><br><span class="line">    xxxx = xxxx.replace(r&quot;__import__(&apos;time&apos;).sleep(100)&quot;,&apos;0&apos;)</span><br><span class="line">    xxxx = xxxx.replace(r&quot;__import__(&apos;os&apos;).system(&apos;find ~&apos;)&quot;, &apos;0&apos;)</span><br><span class="line">    xxxx = xxxx.replace(r&quot;exit()&quot;,&apos;0&apos;)</span><br><span class="line">    xxxx = xxxx.replace(r&quot;print(&apos;\x1b\x5b\x33\x3b\x4a\x1b\x5b\x48\x1b\x5b\x32\x4a&apos;)&quot;,&apos;0&apos;)</span><br><span class="line">    print(xxxx)</span><br><span class="line">    t = str(eval(xxxx)) + &apos;\n&apos;</span><br><span class="line">    print(t)</span><br><span class="line">    b1 = t.encode(encoding=&apos;utf-8&apos;)</span><br><span class="line">    print(b1)</span><br><span class="line">    return b1</span><br><span class="line"></span><br><span class="line">sock = socket.socket()</span><br><span class="line">sock.connect((HOST,PORT))</span><br><span class="line">szBuf = sock.recv(1024)</span><br><span class="line">print(szBuf)</span><br><span class="line">x=0</span><br><span class="line">while 1:</span><br><span class="line">    x=x+1</span><br><span class="line">    print(&apos;--------------------第&apos;+str(x)+&apos;轮-------------------&apos;)</span><br><span class="line">    szBuf = sock.recv(1024)</span><br><span class="line">    print(szBuf)</span><br><span class="line">    b1=RRR(szBuf)</span><br><span class="line">    sock.send(b1)</span><br></pre></td></tr></table></figure></p>
+<h1 id="Z同学的RSA"><a href="#Z同学的RSA" class="headerlink" title="Z同学的RSA"></a>Z同学的RSA</h1><p>本题比赛的时候没有解出来，后期看官方wp，发现是低位爆破。刚开始学crypto,还不咋会，解题代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python2</span><br><span class="line">#coding=utf-8</span><br><span class="line">import gmpy2</span><br><span class="line">import codecs</span><br><span class="line">a=20177650286553319048656572431426864683972322616537528728644836950907654167144961938429509778926505938147163259147328872178897507791522569632637628576826135964471897661414351261453774090509205324220367785291196302551202990322952833839519685942136552490589504983264090018782888509594899124308485994909369157739590678421913334422763356613026472743079024933233557565198057398238454462971661266735075199307328588913060033329742394868127944469289321187036511972057975816136466581904044150309083660596527476198646767207896234322280486096803109351478982849399252765905154625449629131202246956928879278104313464399748896654335</span><br><span class="line">b=-20177650286553319048656572431426864683972322616537528728644836950907654167144961938429509778926505938147163259147328872178897507791522569632637628576826135964471897661414351261453774090509205324220367785291196302551202990322952833839519685942136552490589504983264090018782888509594899124308485994909369157739690798236942786515359420891819523078078001184938002588184640997371794236705658312351156161124668283889171041058024858239408724965303885485356611059740480075879221661858319606783376958758348179998879989787088907672913468336293174408246405953882533580841784122100084676690051777413318254860735992696612183461891</span><br><span class="line">c=13366903717795173429187761381567634048063984815133198408928503123602872647318097072713914639532980123537673828080136443096769208675278048903846468093331645356496756288494505939828792144555809683756644579691988377803769792505153509199204570978899052097185497377390921828391436597604626534413078392906362225675998274015504081511064143613477551873256333146732640157434336327576006467405800870704016822007754775192350360613102361780884075519253676949699170275909029570177548059093617965631063061181238396995096224186949430603966487712969428525308725462401758888441403291459307185920723957045088801754933390532219059494721</span><br><span class="line"></span><br><span class="line">f1 = lambda p, q: (p * q) ^ (p + q)</span><br><span class="line">f2 = lambda p, q: (p * q) ^ (p - q)</span><br><span class="line">candidates = &#123;(0, 0)&#125;</span><br><span class="line"></span><br><span class="line">def run(m):#b2s</span><br><span class="line">    m=hex(m)[2:]</span><br><span class="line">    if len(m)%2==1:</span><br><span class="line">        m=&apos;0&apos;+m</span><br><span class="line">    print(codecs.decode(m,&apos;hex_codec&apos;))</span><br><span class="line"></span><br><span class="line">for m in range(1025):</span><br><span class="line">    print(m, len(candidates))</span><br><span class="line">    candidates_ = set()</span><br><span class="line">    mask = (2 &lt;&lt; m) - 1</span><br><span class="line">    for x, y in candidates:</span><br><span class="line">        if f1(x, y) == a and f2(x, y) == b:</span><br><span class="line">            p, q = x, y</span><br><span class="line">            d = gmpy2.invert(65537, (p - 1) * (q - 1))#计算私钥</span><br><span class="line">            m = pow(c, d, p * q)#计算明文</span><br><span class="line">            run(m)</span><br><span class="line">            exit()</span><br><span class="line">        for bx in range(2):</span><br><span class="line">            for by in range(2):</span><br><span class="line">                xx = x + (bx &lt;&lt; m)</span><br><span class="line">                yy = y + (by &lt;&lt; m)</span><br><span class="line">                if f1(xx, yy) &amp; mask != a &amp; mask:</span><br><span class="line">                    continue</span><br><span class="line">                if f2(xx, yy) &amp; mask != b &amp; mask:</span><br><span class="line">                    continue</span><br><span class="line">                candidates_.add((xx, yy))</span><br><span class="line">    candidates = candidates_</span><br><span class="line"></span><br><span class="line">print libnum.b2s(int(46327402297749971590423845809525539212404427397452776326201243339568645242122))</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CTF/" rel="tag"># CTF</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/18/bugku/" rel="prev" title="bugCTF-web方向wp">
+                bugCTF-web方向wp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://upload-images.jianshu.io/upload_images/11234137-b2b20e005c98464d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Bling_Dog">
+            
+              <p class="site-author-name" itemprop="name">Bling_Dog</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/PiPiChenA" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="563667866@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#签到题"><span class="nav-number">1.</span> <span class="nav-text">签到题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#猫咪问答"><span class="nav-number">2.</span> <span class="nav-text">猫咪问答</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#游园会的集章卡片"><span class="nav-number">3.</span> <span class="nav-text">游园会的集章卡片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Word文档"><span class="nav-number">4.</span> <span class="nav-text">Word文档</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#猫咪银行"><span class="nav-number">5.</span> <span class="nav-text">猫咪银行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#黑曜石浏览器"><span class="nav-number">6.</span> <span class="nav-text">黑曜石浏览器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#回到过去"><span class="nav-number">7.</span> <span class="nav-text">回到过去</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#我是谁"><span class="nav-number">8.</span> <span class="nav-text">我是谁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#哲学思考"><span class="nav-number">8.1.</span> <span class="nav-text">哲学思考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Can-I-help-U"><span class="nav-number">8.2.</span> <span class="nav-text">Can I help U?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#猫咪遥控器"><span class="nav-number">9.</span> <span class="nav-text">猫咪遥控器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#她的诗"><span class="nav-number">10.</span> <span class="nav-text">她的诗</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#猫咪克星"><span class="nav-number">11.</span> <span class="nav-text">猫咪克星</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Z同学的RSA"><span class="nav-number">12.</span> <span class="nav-text">Z同学的RSA</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bling_Dog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/click.js"></script>
+

